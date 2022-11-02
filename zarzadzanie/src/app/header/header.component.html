@@ -1,0 +1,18 @@
+<mat-toolbar class="header">
+    <a routerLink="/">
+      <h1><mat-icon>library_books</mat-icon> Zarządzanie publikacjami</h1>
+    </a>
+    <ul class="nav">
+      <li>
+        <div *ngIf="(isLoggedIn$ | async) === true; else login">
+          <button mat-raised-button color="primary" (click)="onLogout()">Wyloguj</button>
+        </div>
+        <ng-template #login>
+          <button mat-raised-button color="accent" routerLink="/login">Logowanie</button>
+        </ng-template>
+      </li>
+      <li *ngIf="(isLoggedIn$ | async) !== true">
+        <button mat-raised-button color="primary" routerLink="/signup">Rejestracja</button>
+      </li>
+    </ul>
+  </mat-toolbar>

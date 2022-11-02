@@ -1,0 +1,19 @@
+.header {
+
+    display: flex;
+    justify-content: space-between;
+    background-color: #1976d2;;
+}
+h1 {
+    font-size:xx-large;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.nav {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+}
