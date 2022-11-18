@@ -6,16 +6,35 @@ import { FormControl, Validators } from '@angular/forms';
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss'],
 })
+
 export class AuthComponent implements OnInit {
   @Output() onSubmitEvent = new EventEmitter();
   @Input() submitLabel: string;
 
+  imie = new FormControl('', [Validators.required]);
+  nazwisko = new FormControl('', [Validators.required]);
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required]);
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  getImieErrorMessage() {
+    if (this.imie.hasError('required')) {
+      return 'You must enter a value.';
+    }
+
+    return '';
+  }
+
+  getNazwiskoErrorMessage() {
+    if (this.nazwisko.hasError('required')) {
+      return 'You must enter a value.';
+    }
+
+    return '';
+  }
 
   getEmailErrorMessage() {
     if (this.email.hasError('required')) {
@@ -35,8 +54,11 @@ export class AuthComponent implements OnInit {
 
   onSubmit() {
     this.onSubmitEvent.emit({
+      imie: this.imie.value,
+      nazwisko: this.nazwisko.value,
       email: this.email.value,
       password: this.password.value,
     });
   }
+  
 }

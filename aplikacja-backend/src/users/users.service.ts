@@ -51,6 +51,8 @@ export class UsersService {
     return {
       _id: userDocument._id.toHexString(),
       email: userDocument.email,
+      imie: userDocument.imie,
+      nazwisko: userDocument.nazwisko
     };
   }
 }

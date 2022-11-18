@@ -12,9 +12,10 @@ import { ApolloModule, APOLLO_OPTIONS } from 'apollo-angular';
 import { InMemoryCache } from '@apollo/client/core';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeModule } from './home/home.module';
+import { DodajpublikacjeComponent } from './dodajpublikacje/dodajpublikacje.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, DodajpublikacjeComponent],
   imports: [
     BrowserModule,
     HttpClientModule,

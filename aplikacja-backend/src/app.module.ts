@@ -7,7 +7,11 @@ import { UsersModule } from './users/users.module';
 import { ConfigModule } from '@nestjs/config';
 import { DatabaseModule } from './database/database.module';
 import { AuthModule } from './auth/auth.module';
+import { PublikacjaModule } from './publikacja/publikacja.module';
+import { AdminModule } from './admin/admin.module';
+
 import * as Joi from 'joi';
+
 
 
 @Module({
@@ -27,7 +31,9 @@ import * as Joi from 'joi';
     }),
     UsersModule,
     DatabaseModule,
-    AuthModule],
+    AuthModule,
+    PublikacjaModule,
+    AdminModule],
   controllers: [AppController],
   providers: [AppService],
 })

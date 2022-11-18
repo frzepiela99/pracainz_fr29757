@@ -1,10 +1,35 @@
 <div class="container">
+  <!--<mat-form-field appearance="fill">
+    <mat-label>Select an option</mat-label>
+    <mat-select [(value)]="selected">
+      <mat-option value="admin">Administrator</mat-option>
+      <mat-option value="uzytkownik">Użytkownik</mat-option>
+      <mat-option value="recenzent">Recenzent</mat-option>
+    </mat-select>
+  </mat-form-field>-->
+
+  <mat-form-field appearance="outline">
+    <mat-label>Imie</mat-label>
+    <input type="text" matInput [formControl]="imie" required />
+    <mat-icon matSuffix>email</mat-icon>
+    <mat-error *ngIf="imie.invalid">{{ getImieErrorMessage() }}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Nazwisko</mat-label>
+    <input type="text" matInput [formControl]="nazwisko" required />
+    <mat-icon matSuffix>email</mat-icon>
+    <mat-error *ngIf="nazwisko.invalid">{{ getNazwiskoErrorMessage() }}</mat-error>
+  </mat-form-field>
+
+  <!--Pole maila-->
     <mat-form-field appearance="outline">
       <mat-label>Email</mat-label>
       <input type="email" matInput [formControl]="email" required />
       <mat-icon matSuffix>email</mat-icon>
       <mat-error *ngIf="email.invalid">{{ getEmailErrorMessage() }}</mat-error>
     </mat-form-field>
+    <!--Pole hasła-->
     <mat-form-field appearance="outline">
       <mat-label>Password</mat-label>
       <input type="password" matInput [formControl]="password" required />

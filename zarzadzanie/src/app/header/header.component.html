@@ -4,6 +4,11 @@
     </a>
     <ul class="nav">
       <li>
+        <div *ngIf="(isLoggedIn$ | async) === true;">
+          <button mat-raised-button color="accent" routerLink="/dodajpublikacje">Dodaj publikacje</button>
+        </div>
+        </li>
+        <li>
         <div *ngIf="(isLoggedIn$ | async) === true; else login">
           <button mat-raised-button color="primary" (click)="onLogout()">Wyloguj</button>
         </div>
