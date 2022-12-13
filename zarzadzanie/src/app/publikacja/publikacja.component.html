@@ -1,0 +1,11 @@
+<div class="container">
+<h1>Moje publikacje:</h1>
+    <ul class="publikacje">
+        <li class="publikacja" *ngFor="let publikacja of publikacja$ | async">
+          <mat-card (click)="onPublikacjaClick(publikacja._id)">
+            <h3>{{ publikacja.tytul}}</h3>
+          </mat-card>
+        </li>
+      </ul>
+      
+    </div>

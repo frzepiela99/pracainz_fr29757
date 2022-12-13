@@ -1,13 +1,23 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-
-import { PublikacjaController } from './publikacja.controller';
+import { PublikacjaRepository } from './publikacja.repository';
+import { PublikacjaResolver } from './publikacja.resolver';
 import { PublikacjaService } from './publikacja.service';
-import { PublikacjaSchema } from './publikacja.model';
+import { Publikacja } from './models/publikacja.model';
+import { PublikacjaSchema } from './models/publikacja.model';
+
+
 
 @Module({
-  imports: [MongooseModule.forFeature([{name: 'Publikacja', schema: PublikacjaSchema}])],
-  controllers: [PublikacjaController],
-  providers: [PublikacjaService]
+  imports: [
+    MongooseModule.forFeature([
+      {
+    name: Publikacja.name, 
+    schema: PublikacjaSchema
+  },
+]),
+],
+  controllers: [],
+  providers: [PublikacjaResolver, PublikacjaService, PublikacjaRepository],
 })
 export class PublikacjaModule {}

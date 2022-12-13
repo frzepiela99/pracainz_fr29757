@@ -1,0 +1,8 @@
+query publikacjaa($_id: String!)  {
+    publikacjaa(_id: $_id) {
+        _id
+        tytul
+        streszczenie
+        userId
+    }
+}

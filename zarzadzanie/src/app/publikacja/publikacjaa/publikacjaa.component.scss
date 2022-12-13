@@ -1,0 +1,19 @@
+.container {
+    margin: 4rem;
+    text-align: justify;
+}
+.zarzadzaja{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+.zarzadzaj{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    list-style-type: none;
+    margin-bottom: 3rem;
+}

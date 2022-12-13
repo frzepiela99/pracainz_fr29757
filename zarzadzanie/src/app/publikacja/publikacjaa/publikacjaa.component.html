@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="zarzadzaja">
+        <ul class="zarzadzaj">
+        <li>
+            <button mat-raised-button color="primary" routerLink="/dodajpublikacje">Zmień tytuł</button>
+        </li>
+        <li>
+            <button mat-raised-button color="primary" routerLink="/dodajpublikacje">Zmień streszczenie</button>
+        </li>
+        <li>
+            <button mat-raised-button color="primary" routerLink="/dodajpublikacje">Dodaj plik</button>
+        </li>
+        <li>
+            <button mat-raised-button color="primary" routerLink="/dodajpublikacje">Autorzy</button>
+        </li>
+        <li>
+            <button mat-raised-button color="warn" routerLink="/dodajpublikacje">Usuń publikację</button>
+        </li>
+        </ul>
+        </div>
+<ng-container *ngIf="publikacjaa">
+    <!-- <mat-toolbar color="primary"> -->
+        <h1> Tytuł publikacji: <strong>{{ publikacjaa.tytul }}</strong> </h1>
+        <h1>Streszczenie:</h1>
+        <span>{{publikacjaa.streszczenie}}</span>
+        
+        
+        <!-- <button>aaa</button>
+    </mat-toolbar> -->
+</ng-container>
+</div>

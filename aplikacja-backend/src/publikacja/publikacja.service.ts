@@ -1,20 +1,65 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+//import { InjectModel } from '@nestjs/mongoose';
+//import { Model } from 'mongoose';
 
-import { Publikacja } from './publikacja.model';
+import { Publikacja } from './models/publikacja.model';
+import { PublikacjaRepository } from './publikacja.repository';
+import { PublikacjaDocument } from './models/publikacja.schema';
+import { CreatePublikacjaInput } from './dto/input/create-publikacja-input.dto';
+import { GetPublikacjaaArgs } from './dto/args/get-publikacjaa-args.dto';
 
 @Injectable()
 export class PublikacjaService {
-    constructor(
+    constructor(private readonly publikacjaRepository: PublikacjaRepository) {}
+
+    async createPublikacja(
+        createPublikacjaData: CreatePublikacjaInput,
+
+        userId: string,
+    ) {
+        const PublikacjaDocument = await this.publikacjaRepository.create({
+            ...createPublikacjaData,
+           // tytul,
+           // streszczenie,
+            userId,
+        });
+
+        return this.toModel(PublikacjaDocument);
+    }
+
+    async getPublikacja(userId: string) {
+        const PublikacjaDocument = await this.publikacjaRepository.find({ userId });
+        return PublikacjaDocument.map((publikacja) => this.toModel(publikacja));
+    }
+
+    async getPublikacjaa(getPublikacjaaArgs: GetPublikacjaaArgs, userId: string) {
+        const publikacjaaDocument = await this.publikacjaRepository.findOne({
+            ...getPublikacjaaArgs,
+            userId,
+        });
+        return this.toModel(publikacjaaDocument);
+    }
+
+    private toModel(PublikacjaDocument: PublikacjaDocument) {
+        return {
+            _id: PublikacjaDocument._id.toHexString(),
+            ...PublikacjaDocument,
+        };
+    }
+}
+
+
+
+
+
+    /* constructor(
         @InjectModel('Publikacja') private readonly publikacjaModel: Model<Publikacja>,
     ) {}
 
-    async insertPublikacja(tytul: string, streszczenie: string, akceptacja: boolean) {
+    async insertPublikacja(tytul: string, streszczenie: string) {
         const newPublikacja = new this.publikacjaModel({
             tytul,
             streszczenie,
-            akceptacja
         });
 
         const result = await newPublikacja.save();
@@ -27,7 +72,6 @@ export class PublikacjaService {
             id: pub.id,
             tytul: pub.tytul,
             streszczenie: pub.streszczenie,
-            akceptacja: pub.akceptacja
         }));
 
     }
@@ -38,7 +82,6 @@ export class PublikacjaService {
             id: publikacja.id,
             tytul: publikacja.tytul,
             streszczenie: publikacja.streszczenie,
-            akceptacja: publikacja.akceptacja,
         };
     }
 
@@ -46,7 +89,6 @@ export class PublikacjaService {
         publikacjaId: string,
         tytul: string,
         streszczenie: string,
-        akceptacja: boolean,
     ) {
         const updatedPublikacja = await this.findPublikacja(publikacjaId);
         if (tytul) {
@@ -54,9 +96,6 @@ export class PublikacjaService {
         }
         if (streszczenie) {
           updatedPublikacja.streszczenie = streszczenie;
-        }
-        if (akceptacja) {
-          updatedPublikacja.akceptacja = akceptacja;
         }
         updatedPublikacja.save();
     }
@@ -80,3 +119,4 @@ export class PublikacjaService {
       }
 
 }
+*/

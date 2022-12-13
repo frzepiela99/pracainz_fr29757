@@ -12,10 +12,15 @@ import { ApolloModule, APOLLO_OPTIONS } from 'apollo-angular';
 import { InMemoryCache } from '@apollo/client/core';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeModule } from './home/home.module';
-import { DodajpublikacjeComponent } from './dodajpublikacje/dodajpublikacje.component';
+import { DodajpublikacjeComponent } from './publikacja/dodajpublikacje/dodajpublikacje.component';
+import { DodajpublikacjeModule } from './publikacja/dodajpublikacje/dodajpublikacje.module';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { PublikacjaModule } from './publikacja/publikacja.module';
+import { PublikacjaaModule } from './publikacja/publikacjaa/publikacjaa.module';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
-  declarations: [AppComponent, DodajpublikacjeComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -26,6 +31,10 @@ import { DodajpublikacjeComponent } from './dodajpublikacje/dodajpublikacje.comp
     SignUpModule,
     ApolloModule,
     HomeModule,
+    PublikacjaModule,
+    PublikacjaaModule,
+    MatToolbarModule
+
   ],
   providers: [
     {
@@ -42,5 +51,6 @@ import { DodajpublikacjeComponent } from './dodajpublikacje/dodajpublikacje.comp
     },
   ],
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}

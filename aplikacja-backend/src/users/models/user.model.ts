@@ -6,4 +6,9 @@ export class User extends AbstractModel {
 
   @Field()
   readonly email: string;
+  @Field()
+  readonly imie: string;
+
+  @Field()
+  readonly nazwisko: string;
 }

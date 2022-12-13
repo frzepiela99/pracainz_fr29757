@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Get, Param, Patch, Delete} from '@nestjs/common';
+/*import { Controller, Post, Body, Get, Param, Patch, Delete} from '@nestjs/common';
   import { PublikacjaService } from './publikacja.service';
   
   @Controller('publikacja')
@@ -9,12 +9,10 @@ import { Controller, Post, Body, Get, Param, Patch, Delete} from '@nestjs/common
     addPublikacja(
       @Body('tytul') pubTytul: string,
       @Body('streszczenie') pubStreszczenie: string,
-      @Body('akceptacja') pubAkceptacja: boolean,
     ) {
       const generatedId = this.publikacjaService.insertPublikacja(
         pubTytul,
         pubStreszczenie,
-        pubAkceptacja,
       );
       return { id: generatedId };
     }
@@ -35,9 +33,8 @@ import { Controller, Post, Body, Get, Param, Patch, Delete} from '@nestjs/common
       @Param('id') pubId: string,
       @Body('tytul') pubTytul: string,
       @Body('streszczenie') pubStreszczenie: string,
-      @Body('akceptacja') pubAkceptacja: boolean,
     ) {
-      await this.publikacjaService.updatePublikacja(pubId, pubTytul, pubStreszczenie, pubAkceptacja);
+      await this.publikacjaService.updatePublikacja(pubId, pubTytul, pubStreszczenie);
       return null;
     }
   
@@ -47,3 +44,5 @@ import { Controller, Post, Body, Get, Param, Patch, Delete} from '@nestjs/common
         return null;
     }
   }
+  */
+ 

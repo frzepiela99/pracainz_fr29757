@@ -1,0 +1,8 @@
+query publikacja {
+    publikacja {
+        _id
+       tytul
+       streszczenie
+       userId
+    }
+}

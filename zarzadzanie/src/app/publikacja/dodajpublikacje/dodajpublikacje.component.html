@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="formularz">
+    <h2>Dodaj publikacje</h2>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Tytul</mat-label>
+      <input type="text" matInput [formControl]="publikacjaTytul" required />
+      <mat-error *ngIf="publikacjaTytul.invalid">
+        {{ getPublikacjaTytulError() }}
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="outline">
+        <mat-label>Streszczenie</mat-label>
+        <textarea matInput [formControl]="publikacjaStreszczenie" required></textarea>
+        <mat-error *ngIf="publikacjaTytul.invalid">
+          {{ getPublikacjaStreszczenieError() }}
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <button mat-raised-button color="primary" (click)="createPublikacja()">
+        Create
+      </button>
+  </div>
+</div>

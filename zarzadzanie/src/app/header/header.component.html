@@ -9,6 +9,11 @@
         </div>
         </li>
         <li>
+          <div *ngIf="(isLoggedIn$ | async) === true;">
+            <button mat-raised-button color="accent" routerLink="/publikacja">Publikacja</button>
+          </div>
+          </li>
+        <li>
         <div *ngIf="(isLoggedIn$ | async) === true; else login">
           <button mat-raised-button color="primary" (click)="onLogout()">Wyloguj</button>
         </div>

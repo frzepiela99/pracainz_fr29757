@@ -1,0 +1,7 @@
+mutation createPublikacja($createPublikacjaData: CreatePublikacjaInput!){
+    createPublikacja(createPublikacjaData:$createPublikacjaData) {
+        _id
+        tytul
+        streszczenie
+    }
+}
