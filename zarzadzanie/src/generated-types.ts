@@ -15,7 +15,25 @@ export type Scalars = {
   Float: number;
 };
 
+export type Autorzy = {
+  __typename?: 'Autorzy';
+  _id: Scalars['String'];
+  imie: Scalars['String'];
+  nazwisko: Scalars['String'];
+  stopien_naukowy: Scalars['String'];
+  userId: Scalars['String'];
+};
+
+export type CreateAutorzyInput = {
+  imie: Scalars['String'];
+  nazwisko: Scalars['String'];
+  stopien_naukowy: Scalars['String'];
+};
+
 export type CreatePublikacjaInput = {
+  autorImie: Scalars['String'];
+  autorNazwisko: Scalars['String'];
+  autorStopienNaukowy: Scalars['String'];
   streszczenie: Scalars['String'];
   tytul: Scalars['String'];
 };
@@ -27,10 +45,24 @@ export type CreateUserInput = {
   password: Scalars['String'];
 };
 
+export type DeletePublikacjaInput = {
+  _id: Scalars['String'];
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
+  createAutorzy: Autorzy;
   createPublikacja: Publikacja;
   createUser: User;
+  deletePublikacja: Publikacja;
+  updatePublikacjaAutor: Publikacja;
+  updatePublikacjaStreszczenie: Publikacja;
+  updatePublikacjaTytul: Publikacja;
+};
+
+
+export type MutationCreateAutorzyArgs = {
+  createAutorzyData: CreateAutorzyInput;
 };
 
 
@@ -43,9 +75,32 @@ export type MutationCreateUserArgs = {
   createUserData: CreateUserInput;
 };
 
+
+export type MutationDeletePublikacjaArgs = {
+  deletePublikacjaData: DeletePublikacjaInput;
+};
+
+
+export type MutationUpdatePublikacjaAutorArgs = {
+  updatePublikacjaAutorData: UpdatePublikacjaAutorInput;
+};
+
+
+export type MutationUpdatePublikacjaStreszczenieArgs = {
+  updatePublikacjaStreszczenieData: UpdatePublikacjaStreszczenieInput;
+};
+
+
+export type MutationUpdatePublikacjaTytulArgs = {
+  updatePublikacjaTytulData: UpdatePublikacjaTytulInput;
+};
+
 export type Publikacja = {
   __typename?: 'Publikacja';
   _id: Scalars['String'];
+  autorImie: Scalars['String'];
+  autorNazwisko: Scalars['String'];
+  autorStopienNaukowy: Scalars['String'];
   streszczenie: Scalars['String'];
   tytul: Scalars['String'];
   userId: Scalars['String'];
@@ -53,6 +108,7 @@ export type Publikacja = {
 
 export type Query = {
   __typename?: 'Query';
+  autorzy: Array<Autorzy>;
   publikacja: Array<Publikacja>;
   publikacjaa: Publikacja;
   user: User;
@@ -66,6 +122,23 @@ export type QueryPublikacjaaArgs = {
 
 export type QueryUserArgs = {
   _id: Scalars['String'];
+};
+
+export type UpdatePublikacjaAutorInput = {
+  _id: Scalars['String'];
+  autorImie: Scalars['String'];
+  autorNazwisko: Scalars['String'];
+  autorStopienNaukowy: Scalars['String'];
+};
+
+export type UpdatePublikacjaStreszczenieInput = {
+  _id: Scalars['String'];
+  streszczenie: Scalars['String'];
+};
+
+export type UpdatePublikacjaTytulInput = {
+  _id: Scalars['String'];
+  tytul: Scalars['String'];
 };
 
 export type User = {
@@ -88,19 +161,47 @@ export type CreatePublikacjaMutationVariables = Exact<{
 }>;
 
 
-export type CreatePublikacjaMutation = { __typename?: 'Mutation', createPublikacja: { __typename?: 'Publikacja', _id: string, tytul: string, streszczenie: string } };
+export type CreatePublikacjaMutation = { __typename?: 'Mutation', createPublikacja: { __typename?: 'Publikacja', _id: string, tytul: string, streszczenie: string, autorStopienNaukowy: string, autorImie: string, autorNazwisko: string } };
 
 export type PublikacjaQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type PublikacjaQuery = { __typename?: 'Query', publikacja: Array<{ __typename?: 'Publikacja', _id: string, tytul: string, streszczenie: string, userId: string }> };
+export type PublikacjaQuery = { __typename?: 'Query', publikacja: Array<{ __typename?: 'Publikacja', _id: string, tytul: string, streszczenie: string, autorStopienNaukowy: string, autorImie: string, autorNazwisko: string, userId: string }> };
+
+export type UpdatePublikacjaAutorMutationVariables = Exact<{
+  updatePublikacjaAutorData: UpdatePublikacjaAutorInput;
+}>;
+
+
+export type UpdatePublikacjaAutorMutation = { __typename?: 'Mutation', updatePublikacjaAutor: { __typename?: 'Publikacja', _id: string, autorStopienNaukowy: string, autorImie: string, autorNazwisko: string, userId: string } };
 
 export type PublikacjaaQueryVariables = Exact<{
   _id: Scalars['String'];
 }>;
 
 
-export type PublikacjaaQuery = { __typename?: 'Query', publikacjaa: { __typename?: 'Publikacja', _id: string, tytul: string, streszczenie: string, userId: string } };
+export type PublikacjaaQuery = { __typename?: 'Query', publikacjaa: { __typename?: 'Publikacja', _id: string, tytul: string, streszczenie: string, autorStopienNaukowy: string, autorImie: string, autorNazwisko: string, userId: string } };
+
+export type DeletePublikacjaMutationVariables = Exact<{
+  deletePublikacjaData: DeletePublikacjaInput;
+}>;
+
+
+export type DeletePublikacjaMutation = { __typename?: 'Mutation', deletePublikacja: { __typename?: 'Publikacja', _id: string } };
+
+export type UpdatePublikacjaStreszczenieMutationVariables = Exact<{
+  updatePublikacjaStreszczenieData: UpdatePublikacjaStreszczenieInput;
+}>;
+
+
+export type UpdatePublikacjaStreszczenieMutation = { __typename?: 'Mutation', updatePublikacjaStreszczenie: { __typename?: 'Publikacja', _id: string, streszczenie: string, userId: string } };
+
+export type UpdatePublikacjaTytulMutationVariables = Exact<{
+  updatePublikacjaTytulData: UpdatePublikacjaTytulInput;
+}>;
+
+
+export type UpdatePublikacjaTytulMutation = { __typename?: 'Mutation', updatePublikacjaTytul: { __typename?: 'Publikacja', _id: string, tytul: string, userId: string } };
 
 export const CreateUserDocument = gql`
     mutation createUser($createUserData: CreateUserInput!) {
@@ -129,6 +230,9 @@ export const CreatePublikacjaDocument = gql`
     _id
     tytul
     streszczenie
+    autorStopienNaukowy
+    autorImie
+    autorNazwisko
   }
 }
     `;
@@ -149,6 +253,9 @@ export const PublikacjaDocument = gql`
     _id
     tytul
     streszczenie
+    autorStopienNaukowy
+    autorImie
+    autorNazwisko
     userId
   }
 }
@@ -159,7 +266,28 @@ export const PublikacjaDocument = gql`
   })
   export class PublikacjaGQL extends Apollo.Query<PublikacjaQuery, PublikacjaQueryVariables> {
     document = PublikacjaDocument;
-    _id: string;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const UpdatePublikacjaAutorDocument = gql`
+    mutation updatePublikacjaAutor($updatePublikacjaAutorData: UpdatePublikacjaAutorInput!) {
+  updatePublikacjaAutor(updatePublikacjaAutorData: $updatePublikacjaAutorData) {
+    _id
+    autorStopienNaukowy
+    autorImie
+    autorNazwisko
+    userId
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class UpdatePublikacjaAutorGQL extends Apollo.Mutation<UpdatePublikacjaAutorMutation, UpdatePublikacjaAutorMutationVariables> {
+    document = UpdatePublikacjaAutorDocument;
     
     constructor(apollo: Apollo.Apollo) {
       super(apollo);
@@ -171,6 +299,9 @@ export const PublikacjaaDocument = gql`
     _id
     tytul
     streszczenie
+    autorStopienNaukowy
+    autorImie
+    autorNazwisko
     userId
   }
 }
@@ -181,6 +312,66 @@ export const PublikacjaaDocument = gql`
   })
   export class PublikacjaaGQL extends Apollo.Query<PublikacjaaQuery, PublikacjaaQueryVariables> {
     document = PublikacjaaDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const DeletePublikacjaDocument = gql`
+    mutation deletePublikacja($deletePublikacjaData: DeletePublikacjaInput!) {
+  deletePublikacja(deletePublikacjaData: $deletePublikacjaData) {
+    _id
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class DeletePublikacjaGQL extends Apollo.Mutation<DeletePublikacjaMutation, DeletePublikacjaMutationVariables> {
+    document = DeletePublikacjaDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const UpdatePublikacjaStreszczenieDocument = gql`
+    mutation updatePublikacjaStreszczenie($updatePublikacjaStreszczenieData: UpdatePublikacjaStreszczenieInput!) {
+  updatePublikacjaStreszczenie(
+    updatePublikacjaStreszczenieData: $updatePublikacjaStreszczenieData
+  ) {
+    _id
+    streszczenie
+    userId
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class UpdatePublikacjaStreszczenieGQL extends Apollo.Mutation<UpdatePublikacjaStreszczenieMutation, UpdatePublikacjaStreszczenieMutationVariables> {
+    document = UpdatePublikacjaStreszczenieDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const UpdatePublikacjaTytulDocument = gql`
+    mutation updatePublikacjaTytul($updatePublikacjaTytulData: UpdatePublikacjaTytulInput!) {
+  updatePublikacjaTytul(updatePublikacjaTytulData: $updatePublikacjaTytulData) {
+    _id
+    tytul
+    userId
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class UpdatePublikacjaTytulGQL extends Apollo.Mutation<UpdatePublikacjaTytulMutation, UpdatePublikacjaTytulMutationVariables> {
+    document = UpdatePublikacjaTytulDocument;
     
     constructor(apollo: Apollo.Apollo) {
       super(apollo);

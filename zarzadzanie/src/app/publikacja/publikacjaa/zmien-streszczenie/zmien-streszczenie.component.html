@@ -1,0 +1,13 @@
+
+    <h2>Zmień streszczenie publikacji:</h2>
+    <mat-form-field appearance="outline">
+        <mat-label>Zmień streszczenie</mat-label>
+        <textarea matInput [formControl]="publikacjaStreszczenie" required></textarea>
+        <mat-error *ngIf="publikacjaStreszczenie.invalid">
+          {{ getPublikacjaStreszczenie1Error() }}
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <button mat-raised-button color="primary" (click)="editStreszczenie()">
+        Zmień
+      </button>

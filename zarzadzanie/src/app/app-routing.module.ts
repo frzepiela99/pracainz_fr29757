@@ -33,6 +33,7 @@ const routes: Routes = [
     component: PublikacjaComponent,
     canActivate: [AuthGuard]
   },
+  
   {
     path: 'dodajpublikacje',
     component: DodajpublikacjeComponent,

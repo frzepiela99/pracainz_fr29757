@@ -18,6 +18,30 @@
         </mat-error>
       </mat-form-field>
       <br>
+      <mat-form-field appearance="outline">
+        <mat-label>Stopień naukowy autora</mat-label>
+        <textarea matInput [formControl]="publikacjaautorStopienNaukowy" required></textarea>
+        <mat-error *ngIf="publikacjaautorStopienNaukowy.invalid">
+          {{ getPublikacjaAutorStopienNaukowyError() }}
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="outline">
+        <mat-label>Imie autora</mat-label>
+        <textarea matInput [formControl]="publikacjaautorImie" required></textarea>
+        <mat-error *ngIf="publikacjaautorImie.invalid">
+          {{ getPublikacjaAutorImieError() }}
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="outline">
+        <mat-label>Nazwisko autora</mat-label>
+        <textarea matInput [formControl]="publikacjaautorNazwisko" required></textarea>
+        <mat-error *ngIf="publikacjaautorNazwisko.invalid">
+          {{ getPublikacjaAutorNazwiskoError() }}
+        </mat-error>
+      </mat-form-field>
+      <br>
       <button mat-raised-button color="primary" (click)="createPublikacja()">
         Create
       </button>

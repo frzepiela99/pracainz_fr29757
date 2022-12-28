@@ -3,6 +3,9 @@ query publikacjaa($_id: String!)  {
         _id
         tytul
         streszczenie
+        autorStopienNaukowy
+        autorImie
+        autorNazwisko
         userId
     }
 }

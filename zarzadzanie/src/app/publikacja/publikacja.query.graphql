@@ -3,6 +3,9 @@ query publikacja {
         _id
        tytul
        streszczenie
+       autorStopienNaukowy
+       autorImie
+       autorNazwisko
        userId
     }
 }

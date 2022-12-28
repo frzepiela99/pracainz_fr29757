@@ -3,5 +3,8 @@ mutation createPublikacja($createPublikacjaData: CreatePublikacjaInput!){
         _id
         tytul
         streszczenie
+        autorStopienNaukowy
+        autorImie
+        autorNazwisko
     }
 }

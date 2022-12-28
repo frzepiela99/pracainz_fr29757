@@ -5,6 +5,10 @@ import { GqlAuthGuard } from "src/auth/guards/gql-auth.guard";
 import { User } from "src/users/models/user.model";
 import { GetPublikacjaaArgs } from "./dto/args/get-publikacjaa-args.dto";
 import { CreatePublikacjaInput } from "./dto/input/create-publikacja-input.dto";
+import { DeletePublikacjaInput } from "./dto/input/delete-publikacja-input.dto";
+import { UpdatePublikacjaAutorInput } from "./dto/input/update-publikacja_autor-input.dto";
+import { UpdatePublikacjaStreszczenieInput } from "./dto/input/update-publikacja_streszczenie-input.dto";
+import { UpdatePublikacjaTytulInput } from "./dto/input/update-publikacja_tytul-input.dto";
 import { Publikacja } from "./models/publikacja.model";
 import { PublikacjaService } from "./publikacja.service";
 
@@ -19,6 +23,42 @@ export class PublikacjaResolver {
         @CurrentUser() user: User,
     ) {
         return this.publikacjaService.createPublikacja(createPublikacjaData, user._id);
+    }
+
+     @UseGuards(GqlAuthGuard)
+     @Mutation(() => Publikacja)
+     async deletePublikacja(
+         @Args('deletePublikacjaData') deletePublikacjaData: DeletePublikacjaInput,
+         @CurrentUser() user: User,
+     ) {
+         return this.publikacjaService.deletePublikacja(deletePublikacjaData, deletePublikacjaData._id);
+     }
+
+    @UseGuards(GqlAuthGuard)
+    @Mutation(() => Publikacja)
+    async updatePublikacjaAutor(
+        @Args('updatePublikacjaAutorData') updatePublikacjaAutorData: UpdatePublikacjaAutorInput,
+        @CurrentUser() user: User
+    ) {
+        return this.publikacjaService.updatePublikacjaAutor(updatePublikacjaAutorData, user._id)
+    }
+
+    @UseGuards(GqlAuthGuard)
+    @Mutation(() => Publikacja)
+    async updatePublikacjaTytul(
+        @Args('updatePublikacjaTytulData') updatePublikacjaTytulData: UpdatePublikacjaTytulInput,
+        @CurrentUser() user: User
+    ) {
+        return this.publikacjaService.updatePublikacjaTytul(updatePublikacjaTytulData, user._id)
+    }
+
+    @UseGuards(GqlAuthGuard)
+    @Mutation(() => Publikacja)
+    async updatePublikacjaStreszczenie(
+        @Args('updatePublikacjaStreszczenieData') updatePublikacjaStreszczenieData: UpdatePublikacjaStreszczenieInput,
+        @CurrentUser() user: User
+    ) {
+        return this.publikacjaService.updatePublikacjaStreszczenie(updatePublikacjaStreszczenieData, user._id)
     }
 
     @UseGuards(GqlAuthGuard)

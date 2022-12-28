@@ -1,0 +1,7 @@
+mutation updatePublikacjaTytul($updatePublikacjaTytulData: UpdatePublikacjaTytulInput!) {
+  updatePublikacjaTytul(updatePublikacjaTytulData: $updatePublikacjaTytulData) {
+    _id
+    tytul
+    userId
+  }
+}

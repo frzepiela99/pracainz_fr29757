@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs';
 import { Publikacja, PublikacjaaGQL } from 'src/generated-types';
+import { MatDialog } from '@angular/material/dialog';
+import { DodajAutoraComponent } from './dodaj-autora/dodaj-autora.component';
+import { ZmienTytulComponent } from './zmien-tytul/zmien-tytul.component';
+import { ZmienStreszczenieComponent } from './zmien-streszczenie/zmien-streszczenie.component';
+import { UsunPublikacjeComponent } from './usun-publikacje/usun-publikacje.component';
 
 @Component({
   selector: 'app-publikacjaa',
@@ -9,11 +14,13 @@ import { Publikacja, PublikacjaaGQL } from 'src/generated-types';
   styleUrls: ['./publikacjaa.component.scss']
 })
 export class PublikacjaaComponent implements OnInit {
-publikacjaa: Publikacja;
+  publikacjaa: Publikacja;
   constructor(
     private readonly route: ActivatedRoute,
-    private readonly publikacjaaGql: PublikacjaaGQL
-  ) {}
+    private readonly publikacjaaGql: PublikacjaaGQL,
+    private readonly dialog: MatDialog,
+  ) { }
+
 
   ngOnInit(): void {
     this.route.params
@@ -30,10 +37,33 @@ publikacjaa: Publikacja;
       .subscribe((result) => {
         this.publikacjaa = result.data.publikacjaa
       });
-      // .subscribe((result) => {
-      //   this.isLoading = result.loading;
-      //   this.links = result.data.links;
-      // });
+    // .subscribe((result) => {
+    //   this.isLoading = result.loading;
+    //   this.links = result.data.links;
+    // });
   }
 
+  editAutor() {
+    this.dialog.open(DodajAutoraComponent, {
+      data: { publikacjaa: this.publikacjaa },
+    });
+  }
+
+  editTytul() {
+    this.dialog.open(ZmienTytulComponent, {
+      data: { publikacjaa: this.publikacjaa },
+    });
+  }
+
+  editStreszczenie() {
+    this.dialog.open(ZmienStreszczenieComponent, {
+      data: { publikacjaa: this.publikacjaa },
+    });
+  }
+
+  deletePublikacja() {
+    this.dialog.open(UsunPublikacjeComponent, {
+      data: { publikacjaa: this.publikacjaa },
+    });
+  }
 }

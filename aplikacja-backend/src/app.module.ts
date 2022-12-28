@@ -9,6 +9,7 @@ import { DatabaseModule } from './database/database.module';
 import { AuthModule } from './auth/auth.module';
 import { PublikacjaModule } from './publikacja/publikacja.module';
 import { AdminModule } from './admin/admin.module';
+import { AutorzyModule } from './autorzy/autorzy.module';
 
 import * as Joi from 'joi';
 
@@ -33,7 +34,8 @@ import * as Joi from 'joi';
     DatabaseModule,
     AuthModule,
     PublikacjaModule,
-    AdminModule],
+    AdminModule,
+    AutorzyModule],
   controllers: [AppController],
   providers: [AppService],
 })

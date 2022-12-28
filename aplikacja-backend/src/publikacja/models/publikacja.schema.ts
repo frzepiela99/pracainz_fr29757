@@ -11,6 +11,15 @@ export class PublikacjaDocument extends AbstractDocument {
     streszczenie: string;
 
     @Prop()
+    autorStopienNaukowy: string;
+
+    @Prop()
+    autorImie: string;
+
+    @Prop()
+    autorNazwisko: string;
+    
+    @Prop()
     userId:string;
 }
 

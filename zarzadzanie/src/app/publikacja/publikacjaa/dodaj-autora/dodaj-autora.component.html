@@ -1,0 +1,29 @@
+
+    <h2>Zmień dane autora</h2>
+    <mat-form-field appearance="outline">
+      <mat-label>Stopień naukowy</mat-label>
+      <textarea matInput [formControl]="autorStopienNaukowy" required></textarea>
+      <mat-error *ngIf="autorStopienNaukowy.invalid">
+        {{ getAutorStopien_naukowyError() }}
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="outline">
+      <mat-label>Imię</mat-label>
+      <input type="text" matInput [formControl]="autorImie" required />
+      <mat-error *ngIf="autorImie.invalid">
+        {{ getAutorImieError() }}
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="outline">
+        <mat-label>Nazwisko</mat-label>
+        <textarea matInput [formControl]="autorNazwisko" required></textarea>
+        <mat-error *ngIf="autorNazwisko.invalid">
+          {{ getAutorNazwiskoError() }}
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <button mat-raised-button color="primary" (click)="editAutor()">
+        Zmień
+      </button>

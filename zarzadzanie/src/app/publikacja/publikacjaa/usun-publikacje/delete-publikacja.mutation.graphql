@@ -1,0 +1,5 @@
+mutation deletePublikacja($deletePublikacjaData: DeletePublikacjaInput!) {
+  deletePublikacja(deletePublikacjaData: $deletePublikacjaData) {
+    _id
+  }
+}

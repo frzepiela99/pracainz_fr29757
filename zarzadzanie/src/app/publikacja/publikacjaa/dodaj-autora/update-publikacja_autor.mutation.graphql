@@ -1,0 +1,9 @@
+mutation updatePublikacjaAutor($updatePublikacjaAutorData: UpdatePublikacjaAutorInput!) {
+  updatePublikacjaAutor(updatePublikacjaAutorData: $updatePublikacjaAutorData) {
+    _id
+    autorStopienNaukowy
+    autorImie
+    autorNazwisko
+    userId
+  }
+}

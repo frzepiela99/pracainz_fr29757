@@ -12,6 +12,21 @@ export class CreatePublikacjaInput {
   @IsNotEmpty()
   @IsString()
   streszczenie: string;
+  
+  @Field()
+  @IsNotEmpty()
+  @IsString()
+  autorStopienNaukowy: string;
+
+  @Field()
+  @IsNotEmpty()
+  @IsString()
+  autorImie: string;
+
+  @Field()
+  @IsNotEmpty()
+  @IsString()
+  autorNazwisko: string;
 
 }
 

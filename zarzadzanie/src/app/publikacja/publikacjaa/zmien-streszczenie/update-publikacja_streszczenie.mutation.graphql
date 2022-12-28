@@ -1,0 +1,7 @@
+mutation updatePublikacjaStreszczenie($updatePublikacjaStreszczenieData: UpdatePublikacjaStreszczenieInput!) {
+  updatePublikacjaStreszczenie(updatePublikacjaStreszczenieData: $updatePublikacjaStreszczenieData) {
+    _id
+    streszczenie
+    userId
+  }
+}

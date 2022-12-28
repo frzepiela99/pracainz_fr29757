@@ -1,0 +1,13 @@
+
+    <h2>Zmień tytuł publikacji:</h2>
+    <mat-form-field appearance="outline">
+        <mat-label>Tytul</mat-label>
+        <textarea matInput [formControl]="publikacjaTytul" required></textarea>
+        <mat-error *ngIf="publikacjaTytul.invalid">
+          {{ getPublikacjaTytul1Error() }}
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <button mat-raised-button color="primary" (click)="editTytul()">
+        Zmień
+      </button>
