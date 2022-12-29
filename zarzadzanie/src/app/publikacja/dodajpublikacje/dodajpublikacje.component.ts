@@ -73,8 +73,9 @@ export class DodajpublikacjeComponent implements OnInit {
       }
     )
     .subscribe((result) => {console.log (result)}, error => {console.log (error)
-      this.router.navigate(['/publikacja']);
     });
+    this.router.navigate(['/publikacja']);
+
   }
 
 }

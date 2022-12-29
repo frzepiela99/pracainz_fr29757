@@ -39,12 +39,14 @@ export class UsunPublikacjeComponent implements OnInit {
             },
           ],
         }
-      )    .subscribe((result) => {console.log (result)}, error => {console.log (error);
+      )     .subscribe((result) => {console.log (result)}, error => {console.log (error);
       });
+      this.dialogRef.close();
+      this.router.navigate(['/publikacja']);
   }
 
   zamknij() {
     this.dialogRef.close();
-    this.router.navigate(['/publikacja']);
+    
   }
 }

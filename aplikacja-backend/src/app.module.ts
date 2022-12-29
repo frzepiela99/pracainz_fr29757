@@ -10,6 +10,7 @@ import { AuthModule } from './auth/auth.module';
 import { PublikacjaModule } from './publikacja/publikacja.module';
 import { AdminModule } from './admin/admin.module';
 import { AutorzyModule } from './autorzy/autorzy.module';
+import { UploadsModule } from './uploads/uploads.module';
 
 import * as Joi from 'joi';
 
@@ -35,7 +36,8 @@ import * as Joi from 'joi';
     AuthModule,
     PublikacjaModule,
     AdminModule,
-    AutorzyModule],
+    AutorzyModule,
+    UploadsModule],
   controllers: [AppController],
   providers: [AppService],
 })
