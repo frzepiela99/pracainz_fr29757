@@ -6,6 +6,7 @@ query publikacjaa($_id: String!)  {
         autorStopienNaukowy
         autorImie
         autorNazwisko
+        plik
         userId
     }
 }

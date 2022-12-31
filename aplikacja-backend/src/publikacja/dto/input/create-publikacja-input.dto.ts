@@ -27,7 +27,6 @@ export class CreatePublikacjaInput {
   @IsNotEmpty()
   @IsString()
   autorNazwisko: string;
-
 }
 
 

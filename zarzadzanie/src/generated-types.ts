@@ -101,6 +101,7 @@ export type Publikacja = {
   autorImie: Scalars['String'];
   autorNazwisko: Scalars['String'];
   autorStopienNaukowy: Scalars['String'];
+  plik: Scalars['String'];
   streszczenie: Scalars['String'];
   tytul: Scalars['String'];
   userId: Scalars['String'];
@@ -166,7 +167,7 @@ export type CreatePublikacjaMutation = { __typename?: 'Mutation', createPublikac
 export type PublikacjaQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type PublikacjaQuery = { __typename?: 'Query', publikacja: Array<{ __typename?: 'Publikacja', _id: string, tytul: string, streszczenie: string, autorStopienNaukowy: string, autorImie: string, autorNazwisko: string, userId: string }> };
+export type PublikacjaQuery = { __typename?: 'Query', publikacja: Array<{ __typename?: 'Publikacja', _id: string, tytul: string, streszczenie: string, autorStopienNaukowy: string, autorImie: string, autorNazwisko: string, plik: string, userId: string }> };
 
 export type UpdatePublikacjaAutorMutationVariables = Exact<{
   updatePublikacjaAutorData: UpdatePublikacjaAutorInput;
@@ -180,7 +181,7 @@ export type PublikacjaaQueryVariables = Exact<{
 }>;
 
 
-export type PublikacjaaQuery = { __typename?: 'Query', publikacjaa: { __typename?: 'Publikacja', _id: string, tytul: string, streszczenie: string, autorStopienNaukowy: string, autorImie: string, autorNazwisko: string, userId: string } };
+export type PublikacjaaQuery = { __typename?: 'Query', publikacjaa: { __typename?: 'Publikacja', _id: string, tytul: string, streszczenie: string, autorStopienNaukowy: string, autorImie: string, autorNazwisko: string, plik: string, userId: string } };
 
 export type DeletePublikacjaMutationVariables = Exact<{
   deletePublikacjaData: DeletePublikacjaInput;
@@ -256,6 +257,7 @@ export const PublikacjaDocument = gql`
     autorStopienNaukowy
     autorImie
     autorNazwisko
+    plik
     userId
   }
 }
@@ -302,6 +304,7 @@ export const PublikacjaaDocument = gql`
     autorStopienNaukowy
     autorImie
     autorNazwisko
+    plik
     userId
   }
 }

@@ -14,7 +14,7 @@ import { PublikacjaSchema } from './models/publikacja.model';
       {
     name: Publikacja.name, 
     schema: PublikacjaSchema
-  },
+  }
 ]),
 ],
   controllers: [],

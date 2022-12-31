@@ -13,6 +13,7 @@ import { AutorzyModule } from './autorzy/autorzy.module';
 import { UploadsModule } from './uploads/uploads.module';
 
 import * as Joi from 'joi';
+import { MulterModule } from '@nestjs/platform-express';
 
 
 
@@ -30,6 +31,9 @@ import * as Joi from 'joi';
     GraphQLModule.forRoot<ApolloDriverConfig>({
       autoSchemaFile: true,
       driver: ApolloDriver,
+    }),
+    MulterModule.register({
+      dest: './uploads',
     }),
     UsersModule,
     DatabaseModule,

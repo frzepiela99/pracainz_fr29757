@@ -8,10 +8,10 @@
             <button mat-raised-button color="primary" (click)="editStreszczenie()">Zmień streszczenie</button>
         </li>
         <li>
-            <button mat-raised-button color="primary" routerLink="/dodajpublikacje">Dodaj plik</button>
+            <button mat-raised-button color="primary" (click)="dodajPlik()">Dodaj plik</button>
         </li>
         <li>
-            <button mat-raised-button color="warn" routerLink="/dodajpublikacje">Usuń plik</button>
+            <button mat-raised-button color="warn" (click)="dodajPlik1()">Usuń plik</button>
         </li>
         <li>
             <button mat-raised-button class="przycisk" (click)="editAutor()">Zmień autora</button>
@@ -26,9 +26,15 @@
     
     <!-- <mat-toolbar color="primary"> -->
          <h1>Autor publikacji: <strong>{{ publikacjaa.autorStopienNaukowy}} {{ publikacjaa.autorImie}} {{ publikacjaa.autorNazwisko}} </strong> </h1>
-        <h1> Tytuł publikacji: <strong>{{ publikacjaa.tytul }}</strong> </h1>
+        <br>
+         <h1> Tytuł publikacji: <strong>{{ publikacjaa.tytul }}</strong> </h1>
+         <br>
         <h1>Streszczenie:</h1>
-        <span>{{publikacjaa.streszczenie}}</span>
+        <span>{{publikacjaa.streszczenie}}</span><br>
+        <br>
+        <h1>Plik:</h1>
+        <span>{{publikacjaa.plik}}       <button>Pobierz</button></span>
+        
         
         
         <!-- <button>aaa</button>

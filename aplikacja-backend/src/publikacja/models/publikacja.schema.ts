@@ -18,6 +18,9 @@ export class PublikacjaDocument extends AbstractDocument {
 
     @Prop()
     autorNazwisko: string;
+
+    @Prop()
+    plik: string;
     
     @Prop()
     userId:string;

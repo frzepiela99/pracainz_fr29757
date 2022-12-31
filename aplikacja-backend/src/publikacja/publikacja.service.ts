@@ -24,6 +24,7 @@ export class PublikacjaService {
         const PublikacjaDocument = await this.publikacjaRepository.create({
             ...createPublikacjaData,
             userId,
+            plik: 'brak informacji o pliku'
         });
 
         return this.toModel(PublikacjaDocument);

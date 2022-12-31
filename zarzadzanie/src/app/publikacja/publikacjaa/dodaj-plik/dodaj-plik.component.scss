@@ -1,0 +1,32 @@
+.file-container {
+    width: 100%;
+    height: auto;
+    border: 4px dotted gray;
+    background-color: #ebebee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+.file {
+    opacity: 0;
+    padding: 5rem;
+    height: 5rem;
+    width: auto;
+    
+}
+.mat-raised-button {
+    float: right;
+}
+// .mat-icon {
+//     font-size: 150px;
+//     height: 150px ;
+//     width: 150px;
+// }
+.przyciski {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+}

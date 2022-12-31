@@ -18,6 +18,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PublikacjaModule } from './publikacja/publikacja.module';
 import { PublikacjaaModule } from './publikacja/publikacjaa/publikacjaa.module';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { DropzoneArea } from 'material-ui-dropzone';
 
 @NgModule({
   declarations: [AppComponent],
@@ -33,7 +34,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     HomeModule,
     PublikacjaModule,
     PublikacjaaModule,
-    MatToolbarModule
+    MatToolbarModule,
 
   ],
   providers: [

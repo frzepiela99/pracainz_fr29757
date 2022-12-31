@@ -9,6 +9,7 @@ export const PublikacjaSchema = new mongoose.Schema({
     autorStopienNaukowy: { type: String, required: true},
     autorImie: { type: String, required: true},
     autorNazwisko: { type: String, required: true},
+    plik: {type: String, required: false},
     userId: {type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: "User" },
@@ -38,6 +39,9 @@ export class Publikacja extends AbstractModel {
 
     @Field()
     readonly autorNazwisko: string;
+
+    @Field()
+    readonly plik: string;
 
     @Field()
     readonly userId: string;

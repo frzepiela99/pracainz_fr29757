@@ -10,6 +10,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ZmienTytulModule } from './zmien-tytul/zmien-tytul.module';
 import { ZmienStreszczenieModule } from './zmien-streszczenie/zmien-streszczenie.module';
 import { UsunPublikacjeModule } from './usun-publikacje/usun-publikacje.module';
+import { DodajPlikModule } from './dodaj-plik/dodaj-plik.module';
+import { Dodajplik1Module } from './dodajplik1/dodajplik1.module';
 
 
 
@@ -27,7 +29,8 @@ import { UsunPublikacjeModule } from './usun-publikacje/usun-publikacje.module';
     MatDialogModule,
     ZmienTytulModule,
     ZmienStreszczenieModule,
-    UsunPublikacjeModule
+    UsunPublikacjeModule,
+    DodajPlikModule,
     
   ]
 })

@@ -1,0 +1,23 @@
+<h1>Dodaj pliczek!</h1>
+<span *ngIf="!file">Przeciągnij plik lub kliknij aby przesłać</span>
+<br>
+<div class="file-container" *ngIf="!file">
+
+    
+    
+    <input type="file" (change)="getFile($event)" class="file" />
+
+</div>
+<br>
+<button mat-raised-button color="primary" type="file" (click)="getFile($event)" *ngIf="!file" >TESTOWO</button>
+
+<div *ngIf="file">
+    <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+
+   <span> Nazwa pliku: <strong> {{file.name}} </strong> </span><br><br>
+   <div class="przyciski">
+<button mat-raised-button color="primary" (click)="uploadFile()">Prześlij plik</button>
+<button mat-raised-button color="warn" (click)="file = undefined">Wyczyść</button>
+</div>
+</div>
+

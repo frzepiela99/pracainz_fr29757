@@ -6,6 +6,7 @@ query publikacja {
        autorStopienNaukowy
        autorImie
        autorNazwisko
+       plik
        userId
     }
 }

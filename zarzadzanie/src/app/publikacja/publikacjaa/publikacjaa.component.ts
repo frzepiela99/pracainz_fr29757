@@ -7,6 +7,9 @@ import { DodajAutoraComponent } from './dodaj-autora/dodaj-autora.component';
 import { ZmienTytulComponent } from './zmien-tytul/zmien-tytul.component';
 import { ZmienStreszczenieComponent } from './zmien-streszczenie/zmien-streszczenie.component';
 import { UsunPublikacjeComponent } from './usun-publikacje/usun-publikacje.component';
+import { DodajPlikComponent } from './dodaj-plik/dodaj-plik.component';
+import { Dodajplik1Component } from './dodajplik1/dodajplik1.component';
+import { DodajPlikModule } from './dodaj-plik/dodaj-plik.module';
 
 @Component({
   selector: 'app-publikacjaa',
@@ -63,6 +66,17 @@ export class PublikacjaaComponent implements OnInit {
 
   deletePublikacja() {
     this.dialog.open(UsunPublikacjeComponent, {
+      data: { publikacjaa: this.publikacjaa },
+    });
+  }
+
+  dodajPlik() {
+    this.dialog.open(DodajPlikComponent, {
+      data: { publikacjaId: this.publikacjaa._id },
+    });
+  }
+  dodajPlik1() {
+    this.dialog.open(Dodajplik1Component, {
       data: { publikacjaa: this.publikacjaa },
     });
   }
