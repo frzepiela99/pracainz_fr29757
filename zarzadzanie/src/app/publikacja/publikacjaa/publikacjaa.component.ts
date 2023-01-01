@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs';
 import { Publikacja, PublikacjaaGQL } from 'src/generated-types';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DodajAutoraComponent } from './dodaj-autora/dodaj-autora.component';
 import { ZmienTytulComponent } from './zmien-tytul/zmien-tytul.component';
 import { ZmienStreszczenieComponent } from './zmien-streszczenie/zmien-streszczenie.component';
@@ -10,6 +10,9 @@ import { UsunPublikacjeComponent } from './usun-publikacje/usun-publikacje.compo
 import { DodajPlikComponent } from './dodaj-plik/dodaj-plik.component';
 import { Dodajplik1Component } from './dodajplik1/dodajplik1.component';
 import { DodajPlikModule } from './dodaj-plik/dodaj-plik.module';
+import { HttpClient } from '@angular/common/http';
+import * as fileSaver from 'file-saver';
+import { UsunplikComponent } from './usunplik/usunplik.component';
 
 @Component({
   selector: 'app-publikacjaa',
@@ -18,10 +21,14 @@ import { DodajPlikModule } from './dodaj-plik/dodaj-plik.module';
 })
 export class PublikacjaaComponent implements OnInit {
   publikacjaa: Publikacja;
+  pliki: any;
+
   constructor(
+    // @Inject(MAT_DIALOG_DATA) public data: {plikId: string},
     private readonly route: ActivatedRoute,
     private readonly publikacjaaGql: PublikacjaaGQL,
     private readonly dialog: MatDialog,
+    private httpClient: HttpClient
   ) { }
 
 
@@ -37,14 +44,43 @@ export class PublikacjaaComponent implements OnInit {
         //     .valueChanges;
         // })
       )
-      .subscribe((result) => {
-        this.publikacjaa = result.data.publikacjaa
+      .subscribe(async (result) => {
+        this.publikacjaa = result.data.publikacjaa;
+        this.pliki = await this.httpClient.get(`http://localhost:3000/files/${this.publikacjaa._id}`).toPromise();
+        console.log(this.pliki);
       });
     // .subscribe((result) => {
     //   this.isLoading = result.loading;
     //   this.links = result.data.links;
     // });
+
+
   }
+
+  getPlik(plik: any) {
+    this.httpClient.get(`http://localhost:3000/file/${plik.unikalnaNazwaPliku}`,{responseType: "blob"})
+    .subscribe((response: any) => { 
+      
+     const blob = new Blob([response], {type: 'application/pdf'});
+
+    var downloadURL = window.URL.createObjectURL(response);
+    var link = document.createElement('a');
+    link.href = downloadURL;
+    link.download = plik.nazwaPliku;
+    link.click();
+  })
+  }
+
+  
+//   deletePlik() {
+
+//     this.httpClient
+//     .delete('http://localhost:3000/uploads'+this.data.plikId)
+//     .subscribe();
+// }
+
+
+
 
   editAutor() {
     this.dialog.open(DodajAutoraComponent, {
@@ -71,13 +107,22 @@ export class PublikacjaaComponent implements OnInit {
   }
 
   dodajPlik() {
-    this.dialog.open(DodajPlikComponent, {
+    const dodajPlikDialog = this.dialog.open(DodajPlikComponent, {
       data: { publikacjaId: this.publikacjaa._id },
     });
+    dodajPlikDialog.afterClosed().subscribe(async () => {
+      this.pliki = await this.httpClient.get(`http://localhost:3000/files/${this.publikacjaa._id}`).toPromise();
+
+    })
   }
-  dodajPlik1() {
-    this.dialog.open(Dodajplik1Component, {
-      data: { publikacjaa: this.publikacjaa },
+  async deletePlik1(id: string) {
+    const usunPlikDialog =  this.dialog.open(UsunplikComponent, {
+      data: { plikId: id },
     });
+    usunPlikDialog.afterClosed().subscribe(async () => {
+      this.pliki = await this.httpClient.get(`http://localhost:3000/files/${this.publikacjaa._id}`).toPromise();
+
+    })
   }
+
 }

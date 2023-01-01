@@ -11,9 +11,8 @@ import { PublikacjaaComponent } from './publikacja/publikacjaa/publikacjaa.compo
 
 const routes: Routes = [
   {
-    path: 'publikacja/:id',
-    component: PublikacjaaComponent,
-    canActivate: [AuthGuard]
+    path:'',
+    component: StartComponent
   },
   {
     path: 'login',
@@ -29,6 +28,12 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'publikacja/:id',
+    component: PublikacjaaComponent,
+    canActivate: [AuthGuard]
+  },
+
+  {
     path: 'publikacja',
     component: PublikacjaComponent,
     canActivate: [AuthGuard]
@@ -39,10 +44,7 @@ const routes: Routes = [
     component: DodajpublikacjeComponent,
     canActivate: [AuthGuard]
   },
-  {
-    path:'',
-    component: StartComponent
-  },
+
   {
     path: '**',
     redirectTo: '',

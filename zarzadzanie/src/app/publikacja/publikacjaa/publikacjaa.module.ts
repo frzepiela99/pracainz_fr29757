@@ -12,6 +12,7 @@ import { ZmienStreszczenieModule } from './zmien-streszczenie/zmien-streszczenie
 import { UsunPublikacjeModule } from './usun-publikacje/usun-publikacje.module';
 import { DodajPlikModule } from './dodaj-plik/dodaj-plik.module';
 import { Dodajplik1Module } from './dodajplik1/dodajplik1.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -31,6 +32,7 @@ import { Dodajplik1Module } from './dodajplik1/dodajplik1.module';
     ZmienStreszczenieModule,
     UsunPublikacjeModule,
     DodajPlikModule,
+    HttpClientModule
     
   ]
 })

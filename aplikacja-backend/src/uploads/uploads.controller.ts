@@ -1,4 +1,4 @@
-import { BadRequestException,Body,Controller,Get,Param,Post, Req, Res, UploadedFile,UseInterceptors } from '@nestjs/common';
+import { BadRequestException,Body,Controller,Delete,Get,Param,Post, Req, Res, UploadedFile,UseInterceptors } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { Response } from 'express';
 import { PlikService } from './plik.service';
@@ -34,5 +34,10 @@ export class UploadsController {
     const response = await this.plikService.getPlik(publikacjaId);
     console.log(response);
     return response;
+    }
+
+    @Delete('file/:id')
+    async deletePlik(@Param('id') id: string) {
+      return await this.plikService.deletePlik(id);
     }
 }

@@ -2,22 +2,22 @@
     <div class="zarzadzaja">
         <ul class="zarzadzaj">
         <li>
-            <button mat-raised-button color="primary" (click)="editTytul()">Zmień tytuł</button>
+            <button mat-raised-button color="primary" (click)="editTytul()"><mat-icon>edit</mat-icon>  Zmień tytuł</button>
         </li>
         <li>
-            <button mat-raised-button color="primary" (click)="editStreszczenie()">Zmień streszczenie</button>
+            <button mat-raised-button color="primary" (click)="editStreszczenie()"><mat-icon>edit</mat-icon> Zmień streszczenie</button>
+        </li>
+                <li>
+            <button mat-raised-button color="primary" (click)="editAutor()"><mat-icon>edit</mat-icon>  Zmień autora</button>
         </li>
         <li>
-            <button mat-raised-button color="primary" (click)="dodajPlik()">Dodaj plik</button>
+            <button mat-raised-button color="primary" (click)="dodajPlik()"><mat-icon>add_box</mat-icon>  Dodaj plik</button>
         </li>
+        <!-- <li>
+            <button mat-raised-button color="warn" (click)="dodajPlik1()"><mat-icon>delete</mat-icon>  Usuń plik</button>
+        </li> -->
         <li>
-            <button mat-raised-button color="warn" (click)="dodajPlik1()">Usuń plik</button>
-        </li>
-        <li>
-            <button mat-raised-button class="przycisk" (click)="editAutor()">Zmień autora</button>
-        </li>
-        <li>
-            <button mat-raised-button color="warn" (click)="deletePublikacja()">Usuń publikację</button>
+            <button mat-raised-button color="warn" (click)="deletePublikacja()"><mat-icon>delete</mat-icon>  Usuń publikację</button>
         </li>
         </ul>
         </div>
@@ -32,8 +32,18 @@
         <h1>Streszczenie:</h1>
         <span>{{publikacjaa.streszczenie}}</span><br>
         <br>
-        <h1>Plik:</h1>
-        <span>{{publikacjaa.plik}}       <button>Pobierz</button></span>
+        <h1>Załączniki:</h1>
+
+        <div *ngFor="let plik of pliki">
+           <span>Nazwa pliku: <strong>{{plik.nazwaPliku}}</strong>&nbsp;&nbsp; </span> 
+            <button mat-flat-button class="przycisk" (click)="getPlik(plik)">
+                <mat-icon>cloud_download</mat-icon>  Pobierz 
+            </button>            
+            &nbsp;&nbsp;         
+            <button mat-flat-button color="warn"  (click)="deletePlik1(plik._id)">
+                <mat-icon>delete_forever</mat-icon>  Usuń
+            </button><br><br><br><br>
+        </div>
         
         
         

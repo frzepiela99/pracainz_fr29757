@@ -19,6 +19,8 @@ import { PublikacjaModule } from './publikacja/publikacja.module';
 import { PublikacjaaModule } from './publikacja/publikacjaa/publikacjaa.module';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { DropzoneArea } from 'material-ui-dropzone';
+import { StartModule } from './start/start.module';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -35,6 +37,7 @@ import { DropzoneArea } from 'material-ui-dropzone';
     PublikacjaModule,
     PublikacjaaModule,
     MatToolbarModule,
+    StartModule
 
   ],
   providers: [

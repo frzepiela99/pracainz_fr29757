@@ -29,6 +29,7 @@
     "apollo-angular": "^4.1.0",
     "graphql": "^16.6.0",
     "material-ui-dropzone": "^3.5.0",
+    "ngx-toastr": "^16.0.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
@@ -37,6 +38,7 @@
     "@angular-devkit/build-angular": "^14.2.7",
     "@angular/cli": "~14.2.7",
     "@angular/compiler-cli": "^14.2.0",
+    "@types/file-saver": "^2.0.5",
     "@types/jasmine": "~4.0.0",
     "jasmine-core": "~4.3.0",
     "karma": "~6.4.0",

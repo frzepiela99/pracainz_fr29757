@@ -8,9 +8,13 @@
     <input type="file" (change)="getFile($event)" class="file" />
 
 </div>
+<span *ngIf="!file">Maksymalny format pliku to <strong>50 MB</strong>!</span>
 <br>
-<button mat-raised-button color="primary" type="file" (click)="getFile($event)" *ngIf="!file" >TESTOWO</button>
+<span *ngIf="!file">Akceptowane formaty: <strong>( jpg | jpeg | png | gif | pdf )</strong></span>
+<br>
 
+
+<br>
 <div *ngIf="file">
     <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
 

@@ -1,7 +1,8 @@
 
 import { Component, Inject, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-dodaj-plik',
   templateUrl: './dodaj-plik.component.html',
@@ -10,7 +11,10 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class DodajPlikComponent implements OnInit {
 
   constructor( private http: HttpClient,
-    @Inject(MAT_DIALOG_DATA) public data: {publikacjaId: string}) { 
+    @Inject(MAT_DIALOG_DATA) public data: {publikacjaId: string},
+    private readonly dialogRef: MatDialogRef<DodajPlikComponent>,
+    private readonly router: Router,
+    ) { 
 
   }
 
@@ -32,5 +36,6 @@ console.log('file', this.file);
     this.http
     .post('http://localhost:3000/uploads', formData)
     .subscribe((response) => {});
+    this.dialogRef.close(this.uploadFile);
   }
 }

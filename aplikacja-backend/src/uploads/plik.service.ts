@@ -4,6 +4,7 @@ import { Injectable, NotFoundException, Post } from '@nestjs/common';
 
 import { PlikRepository } from './plik.repository';
 import { PlikDocument } from './models/plik.schema';
+import { DeletePlikInput } from './dto/input/delete-plik-input.dto';
 
 @Injectable()
 export class PlikService {
@@ -11,7 +12,7 @@ export class PlikService {
 
     async createPlik(
         publikacjaId: string,
-        nazwaPliku : string,
+        nazwaPliku: string,
         unikalnaNazwaPliku: string,
     ) {
         const PlikDocument = await this.plikRepository.create({
@@ -23,9 +24,16 @@ export class PlikService {
         return this.toModel(PlikDocument);
     }
 
+    async deletePlik(_id: string): Promise<PlikDocument> {
+        const PlikDocument = await this.plikRepository.findByIdAndDelete(
+            _id
+        );
+        return this.toModel(PlikDocument);
+    }
+
     async getPlik(publikacjaId: string) {
         const PlikDocument = await this.plikRepository.find({ publikacjaId });
-        
+
         return PlikDocument.map((plik) => this.toModel(plik));
     }
 
