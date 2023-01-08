@@ -16,6 +16,7 @@ import * as Joi from 'joi';
 import { MulterModule } from '@nestjs/platform-express';
 import { RecenzentModule } from './recenzent/recenzent.module';
 import { OcenaRecModule } from './ocena-rec/ocena-rec.module';
+import { OcenaUzytownikaModule } from './ocena-user/ocena-user.module';
 
 
 
@@ -45,7 +46,8 @@ import { OcenaRecModule } from './ocena-rec/ocena-rec.module';
     AutorzyModule,
     UploadsModule,
     RecenzentModule,
-    OcenaRecModule],
+    OcenaRecModule,
+    OcenaUzytownikaModule],
   controllers: [AppController],
   providers: [AppService],
 })
