@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="formularz">
+        <h1>Dodaj ocene:</h1>
+        <form [formGroup]="userForm" (ngSubmit)="createOcenaUzytkownik()">
+            <span>Ocena pracy w skali 1-5 (1 - Bardzo słaba, 2 - słaba, 3 - średnia, 4 -duża, 5 - bardzo duża)</span><br><br>
+        <mat-radio-group aria-label="Select an option" formControlName="skalaOcena" required>
+            <mat-radio-button value="1">1</mat-radio-button>
+            <mat-radio-button value="2">2</mat-radio-button>
+            <mat-radio-button value="3">3</mat-radio-button>
+            <mat-radio-button value="4">4</mat-radio-button>
+            <mat-radio-button value="5">5</mat-radio-button>
+        </mat-radio-group> <br><br><br>
+
+        <span>Komentarz:</span><br>
+        <mat-form-field appearance="fill">
+            <mat-label>Textarea</mat-label>
+            <textarea matInput formControlName="komentarz" required></textarea>
+        </mat-form-field> <br>
+
+        </form>
+    </div>
+    <button mat-raised-button color="primary" (click)="createOcenaUzytkownik()">Prześlij recenzje</button>
+
+</div>

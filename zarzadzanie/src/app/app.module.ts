@@ -26,6 +26,8 @@ import { RecenzowanieModule } from './publikacja/publikacjaa/recenzent/recenzowa
 import { EdytujKontoModule } from './edytuj-konto/edytuj-konto.module';
 import { CommonModule } from '@angular/common';
 import { OcenaModule } from './publikacja/publikacjaa/recenzent/ocena/ocena.module';
+import { FormOcenyModule } from './form-oceny/form-oceny.module';
+import { OcenaUserModule } from './form-oceny/ocena-user/ocena-user.module';
 
 
 @NgModule({
@@ -49,7 +51,9 @@ import { OcenaModule } from './publikacja/publikacjaa/recenzent/ocena/ocena.modu
     EdytujKontoModule,
     CommonModule,
     FooterModule,
-    OcenaModule
+    OcenaModule,
+    FormOcenyModule,
+    OcenaUserModule
 
   ],
   providers: [

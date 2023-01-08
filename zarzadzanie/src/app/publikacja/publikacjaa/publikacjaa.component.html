@@ -29,6 +29,12 @@
             <button *ngIf="ocena" mat-raised-button color="primary" (click)="recWyswietlOcene()"><mat-icon>delete</mat-icon>  Wyświetl ocene</button>
 
         </ul>
+
+        <ul class="zarzadzaj" *ngIf="!isOwner && user">
+            <button *ngIf="!ocenauz" mat-raised-button color="primary" (click)="uzOcenPublikacje()"><mat-icon>delete</mat-icon>  Oceń publikację</button>
+            <button *ngIf="ocenauz" mat-raised-button color="primary" (click)="uzWyswietlOcene()"><mat-icon>delete</mat-icon>  Wyświetl ocene</button>
+
+        </ul>
     </div>
 
         <span ></span>

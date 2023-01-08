@@ -16,6 +16,8 @@ import { UsunplikComponent } from './usunplik/usunplik.component';
 import { RecenzentComponent } from './recenzent/recenzent.component';
 import { RecenzowanieComponent } from './recenzent/recenzowanie/recenzowanie.component';
 import { OcenaComponent } from './recenzent/ocena/ocena.component';
+import { FormOcenyComponent } from 'src/app/form-oceny/form-oceny.component';
+import { OcenaUserComponent } from 'src/app/form-oceny/ocena-user/ocena-user.component';
 
 @Component({
   selector: 'app-publikacjaa',
@@ -29,6 +31,7 @@ export class PublikacjaaComponent implements OnInit {
   isOwner: boolean;
   isRecenzent: boolean;
   ocena: any;
+  ocenauz: any;
 
   constructor(
     // @Inject(MAT_DIALOG_DATA) public data: {plikId: string},
@@ -63,6 +66,7 @@ export class PublikacjaaComponent implements OnInit {
           const recenzenci: any = await this.httpClient.get(`http://localhost:3000/recenzent/${this.publikacjaa._id}`).toPromise()
           this.isRecenzent = recenzenci.includes(res._id);
           this.getOcena();
+          this.getOcenaUser();
         });
       });
     // .subscribe((result) => {
@@ -88,6 +92,10 @@ export class PublikacjaaComponent implements OnInit {
   async getOcena() {
    this.ocena = await this.httpClient.get(`http://localhost:3000/ocena-rec/${this.publikacjaa._id}/${this.user._id}`).toPromise();
   }
+
+  async getOcenaUser() {
+    this.ocenauz = await this.httpClient.get(`http://localhost:3000/ocena-user/${this.publikacjaa._id}/${this.user._id}`).toPromise();
+   }
   
 //   deletePlik() {
 
@@ -157,6 +165,18 @@ export class PublikacjaaComponent implements OnInit {
   recWyswietlOcene() {
     this.dialog.open(OcenaComponent, {
       data: { ocena: this.ocena },
+    });
+  }
+
+  uzOcenPublikacje() {
+    this.dialog.open(FormOcenyComponent, {
+      data: { publikacjaId: this.publikacjaa._id, userId: this.user._id },
+    });
+  }
+
+  uzWyswietlOcene() {
+    this.dialog.open(OcenaUserComponent, {
+      data: { ocenauz: this.ocenauz },
     });
   }
 }
