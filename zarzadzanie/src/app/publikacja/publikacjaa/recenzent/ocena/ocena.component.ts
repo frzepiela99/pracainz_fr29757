@@ -7,11 +7,11 @@ import { Router } from '@angular/router';
 
 
 @Component({
-  selector: 'app-recenzowanie',
-  templateUrl: './recenzowanie.component.html',
-  styleUrls: ['./recenzowanie.component.scss']
+  selector: 'app-ocena',
+  templateUrl: './ocena.component.html',
+  styleUrls: ['./ocena.component.scss']
 })
-export class RecenzowanieComponent implements OnInit {
+export class OcenaComponent implements OnInit {
   recenzentForm = new FormGroup({
     zgodnoscTemat : new FormControl('', [Validators.required]),
     skalaZgodnoscTemat : new FormControl('', [Validators.required]),
@@ -30,22 +30,25 @@ export class RecenzowanieComponent implements OnInit {
   //ocena = new FormControl('', [Validators.required]);
 
   constructor(private http: HttpClient,
-    @Inject(MAT_DIALOG_DATA) public data: {publikacjaId: string, recenzentId: string},
-    private readonly dialogRef: MatDialogRef<RecenzowanieComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: {ocena: any},
+    private readonly dialogRef: MatDialogRef<OcenaComponent>,
     private readonly router: Router,) { }
 
   ngOnInit(): void {
+    console.log(this.data.ocena);
   }
+
 
   ocena:any;
   ocenaRecDto: any;
+  
   
 
   createOcenaRecenzent() {
     //  let formData = new FormData()
     //   formData.set("publikacjaId", this.data.publikacjaId);
-    console.log('data', this.data.recenzentId)
-    const dto = {...this.recenzentForm.value, publikacjaId: this.data.publikacjaId, recenzentId: this.data.recenzentId}
+    console.log('data', this.ocena)
+    const dto = {...this.recenzentForm.value}
     console.log('dto', dto)
     this.http
     .post('http://localhost:3000/ocena-rec', dto)

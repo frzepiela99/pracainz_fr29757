@@ -1,0 +1,87 @@
+<div class="container">
+    <div class="formularz">
+        <h1>Ocena recenzenta:</h1>
+        <br>
+       
+        <span>Czy treść pracy jest zgodna z tematem?</span> <br>
+        <mat-form-field appearance="fill">
+            <mat-select [disabled]="true" [(value)]="data.ocena.zgodnoscTemat">
+                <mat-option value="Tak">Tak</mat-option>
+                <mat-option value="Nie">Nie</mat-option>
+            </mat-select>
+        </mat-form-field><br><br>
+        <span>Oceń w skali 1-5 zgodność z tematem (1 - Bardzo słaby, 2- słaby,3 - średni, 4 - duży, 5 -bardzo duży):</span><br><br>
+        <mat-radio-group aria-label="Select an option" [disabled]="true">
+            <mat-radio-button [checked]="data.ocena.skalaZgodnoscTemat === '1'" value="1">1</mat-radio-button>
+            <mat-radio-button [checked]="data.ocena.skalaZgodnoscTemat === '2'" value="2">2</mat-radio-button>
+            <mat-radio-button [checked]="data.ocena.skalaZgodnoscTemat === '3'" value="3">3</mat-radio-button>
+            <mat-radio-button [checked]="data.ocena.skalaZgodnoscTemat === '4'" value="4">4</mat-radio-button>
+            <mat-radio-button [checked]="data.ocena.skalaZgodnoscTemat === '5'" value="5">5</mat-radio-button>
+        </mat-radio-group> <br><br>
+        <span>Oceń w skali 1-5 układ pracy, struktury podziału treści, kolejności rozdziałów, kompletności tez itp.
+            (1 - Bardzo słaba, 2 - słaba, 3 - średnia, 4 -duża, 5 - bardzo duża)</span><br><br>
+        <mat-radio-group aria-label="Select an option" [disabled]="true">
+            <mat-radio-button [checked]="data.ocena.skalaZgodnoscTemat === '1'" value="1">1</mat-radio-button>
+            <mat-radio-button [checked]="data.ocena.skalaZgodnoscTemat === '2'" value="2">2</mat-radio-button>
+            <mat-radio-button [checked]="data.ocena.skalaZgodnoscTemat === '3'" value="3">3</mat-radio-button>
+            <mat-radio-button [checked]="data.ocena.skalaZgodnoscTemat === '4'" value="4">4</mat-radio-button>
+            <mat-radio-button [checked]="data.ocena.skalaZgodnoscTemat === '5'" value="5">5</mat-radio-button>
+        </mat-radio-group> <br><br>
+        <span>Merytoryczna ocena pracy (sformułowanie problemów, nowe ujęcie problemu, hipotez, dobór metod i narzędzi
+            badawczych, umiejętność przedstawienia danych (zebranie i zestawienia wyników, wykonanie obliczeń
+            statystycznych, interpretacji itp.)</span><br>
+        <mat-form-field appearance="fill">
+            <mat-label>Textarea</mat-label>
+            <textarea matInput [disabled]="true">{{data.ocena.merytorycznaOcena}}</textarea>
+        </mat-form-field> <br>
+        <span>Oceń w skali 1-5 merytoryczną ocene pracy (1 - Bardzo słaba, 2 - słaba, 3 - średnia, 4 -duża, 5 - bardzo duża)</span><br><br>
+        <mat-radio-group aria-label="Select an option" [disabled]="true">
+            <mat-radio-button [checked]="data.ocena.skalaMerytorycznaOcena === '1'" value="1">1</mat-radio-button>
+            <mat-radio-button [checked]="data.ocena.skalaMerytorycznaOcena === '2'" value="2">2</mat-radio-button>
+            <mat-radio-button [checked]="data.ocena.skalaMerytorycznaOcena === '3'" value="3">3</mat-radio-button>
+            <mat-radio-button [checked]="data.ocena.skalaMerytorycznaOcena === '4'" value="4">4</mat-radio-button>
+            <mat-radio-button [checked]="data.ocena.skalaMerytorycznaOcena === '5'" value="5">5</mat-radio-button>
+        </mat-radio-group> <br><br>
+        <span>Inne uwagi:</span><br>
+        <mat-form-field appearance="fill">
+            <mat-label>Textarea</mat-label>
+            <textarea matInput [disabled]="true">{{data.ocena.uwagi}}</textarea>
+        </mat-form-field> <br>
+        <span>Charakterystyka doboru i wykorzystania źródeł:</span><br>
+        <mat-form-field appearance="fill">
+            <mat-label>Textarea</mat-label>
+            <textarea matInput [disabled]="true">{{data.ocena.charakterystykaZrodel}}</textarea>
+        </mat-form-field> <br>
+        <span>Ocena formalnej strony pracy (poprawność języka, opanowanie techniki pisania pracy, spis treści, odsyłacze)</span> <br>
+        <mat-form-field appearance="fill">
+            <mat-label>Textarea</mat-label>
+            <textarea matInput [disabled]="true">{{data.ocena.formalnaStrona}}</textarea>
+        </mat-form-field> <br>
+        <span>Oceń w skali 1-5 formalną stronę pracy (1 - Bardzo słaba, 2 - słaba, 3 - średnia, 4 -duża, 5 - bardzo duża)</span><br><br>
+        <mat-radio-group aria-label="Select an option" [disabled]="true">
+            <mat-radio-button [checked]="data.ocena.skalaFormalnaStrona === '1'" value="1">1</mat-radio-button>
+            <mat-radio-button [checked]="data.ocena.skalaFormalnaStrona === '2'" value="2">2</mat-radio-button>
+            <mat-radio-button [checked]="data.ocena.skalaFormalnaStrona === '3'" value="3">3</mat-radio-button>
+            <mat-radio-button [checked]="data.ocena.skalaFormalnaStrona === '4'" value="4">4</mat-radio-button>
+            <mat-radio-button [checked]="data.ocena.skalaFormalnaStrona === '5'" value="5">5</mat-radio-button>
+        </mat-radio-group> <br><br>
+        <span>Sposób wykorzystania pracy (publikacja, udostępnienie instytucjom, materiał źródłowy)</span> <br>
+        <mat-form-field appearance="fill">
+            <mat-label>Wybierz opcje</mat-label>
+            <mat-select [disabled]="true" [(value)]="data.ocena.sposobWykorzystania">
+                <mat-option value="Publikacja">Publikacja</mat-option>
+                <mat-option value="Udostępnienie instytucjom">Udostępnienie instytucjom</mat-option>
+                <mat-option value="Materiał źródłowy">Materiał źródłowy</mat-option>
+            </mat-select>
+        </mat-form-field><br>
+        <span>Ocena pracy w skali 1-5 (1 - Bardzo słaba, 2 - słaba, 3 - średnia, 4 -duża, 5 - bardzo duża)</span><br><br>
+        <mat-radio-group aria-label="Select an option" [disabled]="true">
+            <mat-radio-button [checked]="data.ocena.skalaOcena === '1'" value="1">1</mat-radio-button>
+            <mat-radio-button [checked]="data.ocena.skalaOcena === '2'" value="2">2</mat-radio-button>
+            <mat-radio-button [checked]="data.ocena.skalaOcena === '3'" value="3">3</mat-radio-button>
+            <mat-radio-button [checked]="data.ocena.skalaOcena === '4'" value="4">4</mat-radio-button>
+            <mat-radio-button [checked]="data.ocena.skalaOcena === '5'" value="5">5</mat-radio-button>
+        </mat-radio-group> <br><br><br>
+    </div>
+<br>
+</div>

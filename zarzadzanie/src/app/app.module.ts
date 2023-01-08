@@ -25,6 +25,7 @@ import { RecenzentModule } from './publikacja/publikacjaa/recenzent/recenzent.mo
 import { RecenzowanieModule } from './publikacja/publikacjaa/recenzent/recenzowanie/recenzowanie.module';
 import { EdytujKontoModule } from './edytuj-konto/edytuj-konto.module';
 import { CommonModule } from '@angular/common';
+import { OcenaModule } from './publikacja/publikacjaa/recenzent/ocena/ocena.module';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { CommonModule } from '@angular/common';
     RecenzowanieModule,
     EdytujKontoModule,
     CommonModule,
-    FooterModule
+    FooterModule,
+    OcenaModule
 
   ],
   providers: [

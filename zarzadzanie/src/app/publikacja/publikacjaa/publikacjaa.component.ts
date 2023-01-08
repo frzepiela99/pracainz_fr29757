@@ -15,6 +15,7 @@ import * as fileSaver from 'file-saver';
 import { UsunplikComponent } from './usunplik/usunplik.component';
 import { RecenzentComponent } from './recenzent/recenzent.component';
 import { RecenzowanieComponent } from './recenzent/recenzowanie/recenzowanie.component';
+import { OcenaComponent } from './recenzent/ocena/ocena.component';
 
 @Component({
   selector: 'app-publikacjaa',
@@ -154,6 +155,8 @@ export class PublikacjaaComponent implements OnInit {
   }
 
   recWyswietlOcene() {
-    
+    this.dialog.open(OcenaComponent, {
+      data: { ocena: this.ocena },
+    });
   }
 }

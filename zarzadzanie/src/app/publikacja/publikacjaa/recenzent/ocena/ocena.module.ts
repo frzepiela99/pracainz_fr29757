@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RecenzowanieComponent } from './recenzowanie.component';
+import { OcenaComponent } from './ocena.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -16,7 +16,7 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
 
 @NgModule({
   declarations: [
-    RecenzowanieComponent
+    OcenaComponent
   ],
   imports: [
     CommonModule,
@@ -30,4 +30,4 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     ScrollingModule
   ]
 })
-export class RecenzowanieModule { }
+export class OcenaModule { }

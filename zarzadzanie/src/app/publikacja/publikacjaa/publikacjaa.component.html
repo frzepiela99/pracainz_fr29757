@@ -19,6 +19,9 @@
         <li>
             <button mat-raised-button color="warn" (click)="deletePublikacja()"><mat-icon>delete</mat-icon>  Usuń publikację</button>
         </li>
+        <li>
+            <button *ngIf="ocena" mat-raised-button color="primary" (click)="recWyswietlOcene()"><mat-icon>delete</mat-icon>  Wyświetl ocene</button>
+        </li>
         </ul>
 
         <ul class="zarzadzaj" *ngIf="!isOwner && isRecenzent">
@@ -41,7 +44,7 @@
         <span>{{publikacjaa.streszczenie}}</span><br>
         <br>
         <h1>Załączniki:</h1>
-        <span *ngIf="!pliki">Brak</span>
+        
         <div *ngFor="let plik of pliki">
            <span>Nazwa pliku: <strong>{{plik.nazwaPliku}}</strong>&nbsp;&nbsp; </span> 
             <button mat-flat-button class="przycisk" (click)="getPlik(plik)">
@@ -51,9 +54,6 @@
             <button mat-flat-button color="warn"  (click)="deletePlik1(plik._id)" *ngIf="isOwner">
                 <mat-icon>delete_forever</mat-icon>  Usuń
             </button><br><br><br><br>
-            <div class="ocena-rec" *ngIf="isOwner">
-                <h1>Ocena recenzenta:</h1>
-            </div>
         </div>
         
         
