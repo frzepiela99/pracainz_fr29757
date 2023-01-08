@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { map, Observable } from 'rxjs';
 import { Publikacja, PublikacjaGQL } from 'src/generated-types';
 
+
 @Component({
   selector: 'app-publikacja',
   templateUrl: './publikacja.component.html',

@@ -8,6 +8,9 @@ import { HomeComponent } from './home/home.component';
 import { StartComponent } from './start/start.component';
 import { PublikacjaComponent } from './publikacja/publikacja.component';
 import { PublikacjaaComponent } from './publikacja/publikacjaa/publikacjaa.component';
+import { RecenzowanieComponent } from './publikacja/publikacjaa/recenzent/recenzowanie/recenzowanie.component';
+import { EdytujKontoComponent } from './edytuj-konto/edytuj-konto.component';
+import { FooterComponent } from './footer/footer.component';
 
 const routes: Routes = [
   {
@@ -28,6 +31,11 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'edytuj-konto',
+    component: EdytujKontoComponent,
+    canActivate: [AuthGuard],
+  },
+  {
     path: 'publikacja/:id',
     component: PublikacjaaComponent,
     canActivate: [AuthGuard]
@@ -36,6 +44,12 @@ const routes: Routes = [
   {
     path: 'publikacja',
     component: PublikacjaComponent,
+    canActivate: [AuthGuard]
+  },
+
+  {
+    path: 'recenzowanie',
+    component: RecenzowanieComponent,
     canActivate: [AuthGuard]
   },
   

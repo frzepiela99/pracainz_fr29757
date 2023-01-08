@@ -111,8 +111,11 @@ export type Query = {
   __typename?: 'Query';
   autorzy: Array<Autorzy>;
   publikacja: Array<Publikacja>;
+  publikacjaAll: Array<Publikacja>;
   publikacjaa: Publikacja;
   user: User;
+  usersAll: Array<User>;
+  zalogowanyUser: User;
 };
 
 
@@ -157,6 +160,11 @@ export type CreateUserMutationVariables = Exact<{
 
 export type CreateUserMutation = { __typename?: 'Mutation', createUser: { __typename?: 'User', _id: string, imie: string, nazwisko: string, email: string } };
 
+export type PublikacjaAllQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type PublikacjaAllQuery = { __typename?: 'Query', publikacjaAll: Array<{ __typename?: 'Publikacja', _id: string, tytul: string, streszczenie: string, autorStopienNaukowy: string, autorImie: string, autorNazwisko: string, plik: string, userId: string }> };
+
 export type CreatePublikacjaMutationVariables = Exact<{
   createPublikacjaData: CreatePublikacjaInput;
 }>;
@@ -183,6 +191,11 @@ export type PublikacjaaQueryVariables = Exact<{
 
 export type PublikacjaaQuery = { __typename?: 'Query', publikacjaa: { __typename?: 'Publikacja', _id: string, tytul: string, streszczenie: string, autorStopienNaukowy: string, autorImie: string, autorNazwisko: string, plik: string, userId: string } };
 
+export type UsersAllQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type UsersAllQuery = { __typename?: 'Query', usersAll: Array<{ __typename?: 'User', _id: string, email: string, imie: string, nazwisko: string }> };
+
 export type DeletePublikacjaMutationVariables = Exact<{
   deletePublikacjaData: DeletePublikacjaInput;
 }>;
@@ -204,6 +217,11 @@ export type UpdatePublikacjaTytulMutationVariables = Exact<{
 
 export type UpdatePublikacjaTytulMutation = { __typename?: 'Mutation', updatePublikacjaTytul: { __typename?: 'Publikacja', _id: string, tytul: string, userId: string } };
 
+export type ZalogowanyUserQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type ZalogowanyUserQuery = { __typename?: 'Query', zalogowanyUser: { __typename?: 'User', _id: string, email: string, imie: string, nazwisko: string } };
+
 export const CreateUserDocument = gql`
     mutation createUser($createUserData: CreateUserInput!) {
   createUser(createUserData: $createUserData) {
@@ -220,6 +238,31 @@ export const CreateUserDocument = gql`
   })
   export class CreateUserGQL extends Apollo.Mutation<CreateUserMutation, CreateUserMutationVariables> {
     document = CreateUserDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const PublikacjaAllDocument = gql`
+    query publikacjaAll {
+  publikacjaAll {
+    _id
+    tytul
+    streszczenie
+    autorStopienNaukowy
+    autorImie
+    autorNazwisko
+    plik
+    userId
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class PublikacjaAllGQL extends Apollo.Query<PublikacjaAllQuery, PublikacjaAllQueryVariables> {
+    document = PublikacjaAllDocument;
     
     constructor(apollo: Apollo.Apollo) {
       super(apollo);
@@ -320,6 +363,27 @@ export const PublikacjaaDocument = gql`
       super(apollo);
     }
   }
+export const UsersAllDocument = gql`
+    query usersAll {
+  usersAll {
+    _id
+    email
+    imie
+    nazwisko
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class UsersAllGQL extends Apollo.Query<UsersAllQuery, UsersAllQueryVariables> {
+    document = UsersAllDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
 export const DeletePublikacjaDocument = gql`
     mutation deletePublikacja($deletePublikacjaData: DeletePublikacjaInput!) {
   deletePublikacja(deletePublikacjaData: $deletePublikacjaData) {
@@ -375,6 +439,27 @@ export const UpdatePublikacjaTytulDocument = gql`
   })
   export class UpdatePublikacjaTytulGQL extends Apollo.Mutation<UpdatePublikacjaTytulMutation, UpdatePublikacjaTytulMutationVariables> {
     document = UpdatePublikacjaTytulDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const ZalogowanyUserDocument = gql`
+    query zalogowanyUser {
+  zalogowanyUser {
+    _id
+    email
+    imie
+    nazwisko
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class ZalogowanyUserGQL extends Apollo.Query<ZalogowanyUserQuery, ZalogowanyUserQueryVariables> {
+    document = ZalogowanyUserDocument;
     
     constructor(apollo: Apollo.Apollo) {
       super(apollo);

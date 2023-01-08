@@ -1,6 +1,6 @@
 <div class="container">
     <div class="zarzadzaja">
-        <ul class="zarzadzaj">
+        <ul class="zarzadzaj" *ngIf="isOwner">
         <li>
             <button mat-raised-button color="primary" (click)="editTytul()"><mat-icon>edit</mat-icon>  Zmień tytuł</button>
         </li>
@@ -13,14 +13,22 @@
         <li>
             <button mat-raised-button color="primary" (click)="dodajPlik()"><mat-icon>add_box</mat-icon>  Dodaj plik</button>
         </li>
-        <!-- <li>
-            <button mat-raised-button color="warn" (click)="dodajPlik1()"><mat-icon>delete</mat-icon>  Usuń plik</button>
-        </li> -->
+        <li>
+            <button mat-raised-button color="primary" (click)="recenzenci()"><mat-icon> local_library</mat-icon>  Zarządzaj recenzentami</button>
+        </li>
         <li>
             <button mat-raised-button color="warn" (click)="deletePublikacja()"><mat-icon>delete</mat-icon>  Usuń publikację</button>
         </li>
         </ul>
-        </div>
+
+        <ul class="zarzadzaj" *ngIf="!isOwner && isRecenzent">
+            <button *ngIf="!ocena" mat-raised-button color="primary" (click)="recOcenPublikacje()"><mat-icon>delete</mat-icon>  Oceń publikację</button>
+            <button *ngIf="ocena" mat-raised-button color="primary" (click)="recWyswietlOcene()"><mat-icon>delete</mat-icon>  Wyświetl ocene</button>
+
+        </ul>
+    </div>
+
+        <span ></span>
         
 <ng-container *ngIf="publikacjaa">
     
@@ -33,16 +41,19 @@
         <span>{{publikacjaa.streszczenie}}</span><br>
         <br>
         <h1>Załączniki:</h1>
-
+        <span *ngIf="!pliki">Brak</span>
         <div *ngFor="let plik of pliki">
            <span>Nazwa pliku: <strong>{{plik.nazwaPliku}}</strong>&nbsp;&nbsp; </span> 
             <button mat-flat-button class="przycisk" (click)="getPlik(plik)">
                 <mat-icon>cloud_download</mat-icon>  Pobierz 
             </button>            
             &nbsp;&nbsp;         
-            <button mat-flat-button color="warn"  (click)="deletePlik1(plik._id)">
+            <button mat-flat-button color="warn"  (click)="deletePlik1(plik._id)" *ngIf="isOwner">
                 <mat-icon>delete_forever</mat-icon>  Usuń
             </button><br><br><br><br>
+            <div class="ocena-rec" *ngIf="isOwner">
+                <h1>Ocena recenzenta:</h1>
+            </div>
         </div>
         
         
@@ -50,4 +61,5 @@
         <!-- <button>aaa</button>
     </mat-toolbar> -->
 </ng-container>
+
 </div>

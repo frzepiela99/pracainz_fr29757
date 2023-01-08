@@ -36,11 +36,16 @@ export class PublikacjaService {
         return PublikacjaDocument.map((publikacja) => this.toModel(publikacja));
     }
 
-    async getPublikacjaa(getPublikacjaaArgs: GetPublikacjaaArgs, userId: string) {
+    async getPublikacjaAll() {
+        const PublikacjaDocument = await this.publikacjaRepository.find({ });
+        console.log(PublikacjaDocument);
+        return PublikacjaDocument.map((publikacja) => this.toModel(publikacja));
+    }
+
+    async getPublikacjaa(getPublikacjaaArgs: GetPublikacjaaArgs) {
         // const post = await Post.findById(req.params.id).populate("publikacja");
         const publikacjaaDocument = await this.publikacjaRepository.findOne({
             ...getPublikacjaaArgs,
-            userId,
         });;
         console.log(publikacjaaDocument);
         return this.toModel(publikacjaaDocument);

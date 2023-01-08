@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="zarzadzaja">
+        <ul class="zarzadzaj">
+        <li>
+            <button mat-raised-button color="primary"><mat-icon>edit</mat-icon>Edytuj dane</button>
+        </li>
+        <li>
+            <button mat-raised-button color="primary"><mat-icon>edit</mat-icon>Zmień hasło</button>
+        </li>
+        </ul>
+        </div>
+        
+<ng-container>
+    
+    <!-- <mat-toolbar color="primary"> -->
+         <!-- <h1>Autor publikacji: <strong>{{ publikacjaa.autorStopienNaukowy}} {{ publikacjaa.autorImie}} {{ publikacjaa.autorNazwisko}} </strong> </h1>
+        <br>
+         <h1> Tytuł publikacji: <strong>{{ publikacjaa.tytul }}</strong> </h1>
+         <br>
+        <h1>Streszczenie:</h1>
+        <span>{{publikacjaa.streszczenie}}</span><br>
+        <br>
+        <h1>Załączniki:</h1>
+        <span *ngIf="!pliki">Brak</span>
+        <div *ngFor="let plik of pliki">
+           <span>Nazwa pliku: <strong>{{plik.nazwaPliku}}</strong>&nbsp;&nbsp; </span> 
+            <button mat-flat-button class="przycisk" (click)="getPlik(plik)">
+                <mat-icon>cloud_download</mat-icon>  Pobierz 
+            </button>            
+            &nbsp;&nbsp;         
+            <button mat-flat-button color="warn"  (click)="deletePlik1(plik._id)">
+                <mat-icon>delete_forever</mat-icon>  Usuń
+            </button><br><br><br><br>
+        </div> -->
+        <div class="info">
+        <mat-icon class="user">person_outline</mat-icon>
+        <div class="informacje">
+            <br>
+        <h1>Dane użytownika:</h1>
+        <h3>Imię:</h3>
+        <h3>Nazwisko:</h3>
+        <h3>Adres e-mail:</h3>
+    </div>
+    </div>
+</ng-container>
+</div>

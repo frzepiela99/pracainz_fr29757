@@ -1,0 +1,39 @@
+.container {
+    margin: 5rem;
+    text-align: justify;
+}
+.zarzadzaja{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+.zarzadzaj{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    list-style-type: none;
+    margin-bottom: 3rem;
+}
+.przycisk{
+    background-color: rgb(238, 255, 0);
+    color: black;
+}
+.user {
+    font-size: 220px;
+    width: 400px;
+    height: 400px;
+    float: left;
+    text-align: right;
+  }
+  .info {
+    margin-top: 5vh;
+    margin-left: 3rem;
+    margin-right: 3rem;
+  }
+  .informacje {
+    margin-top: 5vh;
+
+  }

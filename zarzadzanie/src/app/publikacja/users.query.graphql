@@ -1,0 +1,8 @@
+query zalogowanyUser {
+  zalogowanyUser {
+    _id
+    email
+    imie
+    nazwisko
+  }
+}

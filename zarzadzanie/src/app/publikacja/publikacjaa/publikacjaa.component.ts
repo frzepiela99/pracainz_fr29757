@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { switchMap } from 'rxjs';
-import { Publikacja, PublikacjaaGQL } from 'src/generated-types';
+import { map, switchMap } from 'rxjs';
+import { Publikacja, PublikacjaaGQL, ZalogowanyUserGQL } from 'src/generated-types';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DodajAutoraComponent } from './dodaj-autora/dodaj-autora.component';
 import { ZmienTytulComponent } from './zmien-tytul/zmien-tytul.component';
@@ -13,6 +13,8 @@ import { DodajPlikModule } from './dodaj-plik/dodaj-plik.module';
 import { HttpClient } from '@angular/common/http';
 import * as fileSaver from 'file-saver';
 import { UsunplikComponent } from './usunplik/usunplik.component';
+import { RecenzentComponent } from './recenzent/recenzent.component';
+import { RecenzowanieComponent } from './recenzent/recenzowanie/recenzowanie.component';
 
 @Component({
   selector: 'app-publikacjaa',
@@ -22,11 +24,16 @@ import { UsunplikComponent } from './usunplik/usunplik.component';
 export class PublikacjaaComponent implements OnInit {
   publikacjaa: Publikacja;
   pliki: any;
+  user: any;
+  isOwner: boolean;
+  isRecenzent: boolean;
+  ocena: any;
 
   constructor(
     // @Inject(MAT_DIALOG_DATA) public data: {plikId: string},
     private readonly route: ActivatedRoute,
     private readonly publikacjaaGql: PublikacjaaGQL,
+    private readonly zalogowanyUserGql: ZalogowanyUserGQL,
     private readonly dialog: MatDialog,
     private httpClient: HttpClient
   ) { }
@@ -47,14 +54,20 @@ export class PublikacjaaComponent implements OnInit {
       .subscribe(async (result) => {
         this.publikacjaa = result.data.publikacjaa;
         this.pliki = await this.httpClient.get(`http://localhost:3000/files/${this.publikacjaa._id}`).toPromise();
-        console.log(this.pliki);
+        this.zalogowanyUserGql
+        .watch()
+        .valueChanges.pipe(map((result) => result.data.zalogowanyUser)).subscribe(async (res) => {
+          this.user = res;
+          this.isOwner = res._id === result.data.publikacjaa.userId;
+          const recenzenci: any = await this.httpClient.get(`http://localhost:3000/recenzent/${this.publikacjaa._id}`).toPromise()
+          this.isRecenzent = recenzenci.includes(res._id);
+          this.getOcena();
+        });
       });
     // .subscribe((result) => {
     //   this.isLoading = result.loading;
     //   this.links = result.data.links;
     // });
-
-
   }
 
   getPlik(plik: any) {
@@ -71,6 +84,9 @@ export class PublikacjaaComponent implements OnInit {
   })
   }
 
+  async getOcena() {
+   this.ocena = await this.httpClient.get(`http://localhost:3000/ocena-rec/${this.publikacjaa._id}/${this.user._id}`).toPromise();
+  }
   
 //   deletePlik() {
 
@@ -125,4 +141,19 @@ export class PublikacjaaComponent implements OnInit {
     })
   }
 
+  recenzenci() {
+    this.dialog.open(RecenzentComponent, {
+      data: { publikacjaId: this.publikacjaa._id },
+    });
+  }
+
+  recOcenPublikacje() {
+    this.dialog.open(RecenzowanieComponent, {
+      data: { publikacjaId: this.publikacjaa._id, recenzentId: this.user._id },
+    });
+  }
+
+  recWyswietlOcene() {
+    
+  }
 }

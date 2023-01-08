@@ -4,6 +4,7 @@ import { AbstractDocument } from '../../database/abstract.schema';
 @Schema({ versionKey: false })
 export class UserDocument extends AbstractDocument {
 
+
   @Prop()
   imie: string;
 

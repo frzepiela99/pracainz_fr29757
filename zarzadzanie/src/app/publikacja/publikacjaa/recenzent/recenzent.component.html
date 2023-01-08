@@ -1,0 +1,17 @@
+<div class="container">
+    <h1>Przydziel recenzenta:</h1>
+        <!-- <ul class="users">
+            <li class="user" *ngFor="let usersAll of users$ | async">
+                <h3>{{ usersAll.imie}} {{ usersAll.nazwisko}}</h3>
+            </li>
+          </ul> -->
+
+          <mat-selection-list #rec [multiple]="true">
+            <mat-list-option *ngFor="let user of users$ | async" [value]="user._id" [selected]="recenzenci?.includes(user._id)">
+                {{ user.imie}} {{ user.nazwisko}}
+            </mat-list-option>
+          </mat-selection-list>
+
+          <button (click)="confirm()">Zastosuj</button>
+          
+        </div>

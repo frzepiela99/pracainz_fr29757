@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderModule } from './header/header.module';
+import { FooterModule } from './footer/footer.module';
 import { LoginModule } from './auth/login/login.module';
 import { SignUpModule } from './auth/sign-up/sign-up.module';
 import { ApolloModule, APOLLO_OPTIONS } from 'apollo-angular';
@@ -20,6 +21,10 @@ import { PublikacjaaModule } from './publikacja/publikacjaa/publikacjaa.module';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { DropzoneArea } from 'material-ui-dropzone';
 import { StartModule } from './start/start.module';
+import { RecenzentModule } from './publikacja/publikacjaa/recenzent/recenzent.module';
+import { RecenzowanieModule } from './publikacja/publikacjaa/recenzent/recenzowanie/recenzowanie.module';
+import { EdytujKontoModule } from './edytuj-konto/edytuj-konto.module';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -37,7 +42,12 @@ import { StartModule } from './start/start.module';
     PublikacjaModule,
     PublikacjaaModule,
     MatToolbarModule,
-    StartModule
+    StartModule,
+    RecenzentModule,
+    RecenzowanieModule,
+    EdytujKontoModule,
+    CommonModule,
+    FooterModule
 
   ],
   providers: [
@@ -54,6 +64,7 @@ import { StartModule } from './start/start.module';
       deps: [HttpLink],
     },
   ],
+  exports: [ BrowserModule, CommonModule],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

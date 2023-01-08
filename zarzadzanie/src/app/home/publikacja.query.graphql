@@ -1,0 +1,12 @@
+query publikacjaAll {
+    publikacjaAll {
+        _id
+       tytul
+       streszczenie
+       autorStopienNaukowy
+       autorImie
+       autorNazwisko
+       plik
+       userId
+    }
+}

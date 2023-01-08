@@ -1,0 +1,8 @@
+query usersAll {
+  usersAll {
+    _id
+    email
+    imie
+    nazwisko
+  }
+}

@@ -68,11 +68,17 @@ export class PublikacjaResolver {
     }
 
     @UseGuards(GqlAuthGuard)
+    @Query(() => [Publikacja], { name: 'publikacjaAll' })
+    async getPublikacjaAll(@CurrentUser() user: User) {
+        return this.publikacjaService.getPublikacjaAll();
+    }
+
+    @UseGuards(GqlAuthGuard)
     @Query(() => Publikacja, { name: 'publikacjaa' })
     async getPublikacjaa(
         @Args() getPublikacjaaArgs: GetPublikacjaaArgs,
         @CurrentUser() user: User,
     ) {
-        return this.publikacjaService.getPublikacjaa(getPublikacjaaArgs, user._id);
+        return this.publikacjaService.getPublikacjaa(getPublikacjaaArgs);
     }
 }

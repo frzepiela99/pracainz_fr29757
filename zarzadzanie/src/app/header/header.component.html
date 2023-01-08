@@ -1,11 +1,12 @@
 <mat-toolbar class="header">
-  <a routerLink="/">
+  <a routerLink="/home">
     <h1><mat-icon>library_books</mat-icon> Zarządzanie publikacjami</h1>
   </a>
   <ul class="nav">
+
     <li>
       <div *ngIf="(isLoggedIn$ | async) === true;">
-        <button mat-raised-button color="accent" routerLink="/edytuj">Edytuj Konto</button>
+        <button mat-raised-button color="accent" routerLink="/edytuj-konto">Edytuj Konto</button>
       </div>
     </li>
     <li>
